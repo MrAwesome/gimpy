@@ -11,7 +11,9 @@ Features:
 
 ## Installation:
 Back up any existing local awesome config, if you have one:
+
     mv ~/.config/awesome/ ~/.config/OLD_AWESOME_BACKUP/
 
 Then clone directly into the awesome config directory:
+
     git clone https://github.com/MrAwesome/gimpy.git ~/.config/awesome/
