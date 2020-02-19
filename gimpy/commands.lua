@@ -1,7 +1,8 @@
 local globals = require("gimpy/globals")
 
 local commands = {}
-commands.browser = "google-chrome-stable &> /dev/null " 
+commands.browser = "brave &> /dev/null "
+commands.signal_desktop = "signal-desktop &> /dev/null "
 -- commands.slow_paste     = 
 --   'xvkbd -no-jump-pointer -xsendevent -text "\\D1`xsel`" 2>/dev/null'
 commands.paste = 'xdotool getwindowfocus key --window %1 shift click 2'
@@ -54,7 +55,7 @@ commands.respawn_cmd_shell =
   "sleep .3; xdotool key --delay 10 ctrl+d Return Up Return"
 commands.echo_awk_print = commands.xdotool_echo .. commands.awk_print
 commands.terminal_white = globals.terminal .. " -bg white -fg black"
-commands.minecraft = "java -jar /home/glenn/minecraft.jar"
+commands.minecraft = "minecraft-launcher"
 
 -- Alias-style macros
 commands.tmux_screen_switch = "xdotool key ctrl+b l"

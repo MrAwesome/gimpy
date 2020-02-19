@@ -111,6 +111,9 @@ local function get_per_screen_setup_func (widgets)
       screen = s 
     })
 
+    spacer = wibox.widget.textbox()
+    spacer.text = " "
+
     -- Add widgets to the wibox
     s.mywibox:setup({
       layout = wibox.layout.align.horizontal,
@@ -127,7 +130,11 @@ local function get_per_screen_setup_func (widgets)
       { 
         layout = wibox.layout.fixed.horizontal,
         wibox.widget.systray(),
+	spacer,
+	spacer,
         widgets.batterywidget,
+	spacer,
+	spacer,
         widgets.musicwidget,
         widgets.pingoogwidget,
         widgets.pingdevwidget,
