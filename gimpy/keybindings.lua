@@ -231,10 +231,7 @@ keybindings.get_global_user_command_keybindings = function ()
   key({ mc }, "u", spawn(commands.masterup)),
   key({ }, "XF86AudioLowerVolume", spawn(commands.masterdown)),
   key({ }, "XF86AudioRaiseVolume", spawn(commands.masterup)),
-  key({ mc, "Control" }, "y", spawn(commands.mastermute)),
-  key({ mc, "Control" }, "u", spawn(commands.masterunmute)),
-  key({ }, "XF86AudioMute", spawn(commands.mastermute)),
-  key({ "Shift" }, "XF86AudioMute", spawn(commands.masterunmute))
+  key({ }, "XF86AudioMute", spawn(commands.togglemute))
   )
 end
 

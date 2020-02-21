@@ -21,12 +21,13 @@ startup_commands.run_startup_commands = function ()
       awful.spawn.easy_async_with_shell(globals.screen_one_terminal_cmd .. "-ic 'vim TODO.txt'")
     end
   end)
-   screen.tags[3]:view_only()
-   awful.spawn.easy_async('pgrep -f signal-desktop', function (stdout, stderr, exitreason, exitcode)
-     if exitcode > 0 then
-       awful.spawn.easy_async_with_shell(globals.signal_desktop)
-     end
-   end)
+
+  screen.tags[3]:view_only()
+  awful.spawn.easy_async('pgrep -f signal-desktop', function (stdout, stderr, exitreason, exitcode)
+    if exitcode > 0 then
+      awful.spawn.easy_async_with_shell(commands.signal_desktop)
+    end
+  end)
 --   awful.spawn.easy_async('pgrep -f CODE_TODO', function (stdout, stderr, exitreason, exitcode)
 --     if exitcode > 0 then
 --       awful.spawn.easy_async_with_shell(globals.work_terminal_cmd .. " -ic 'sleep .1 && echo CODE_TODO && vim code_todo.txt'")
