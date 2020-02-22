@@ -69,9 +69,11 @@ rules.set_all_client_rules = function (clientkeys, clientbuttons)
 
     { rule = { class = "Firefox" }, properties = { tag = "1" } },
     { rule = { class = "Chromium" }, properties = { tag = "1" } },
+    { rule = { class = ".*Brave" }, properties = { tag = "1" } },
     { rule = { class = "Google Chrome" }, properties = { tag = "1" } },
     { rule = { name = globals.screen_one_terminal_name }, properties = { tag = "1" } },
     { rule = { name = globals.work_terminal_name }, properties = { tag = "2" } },
+    { rule = { name = "Signal" }, properties = { tag = "3" } },
     { rule = { class = ".*inecraft.*" }, properties = { tag = "4" } },
     { rule = { name = ".*potify.*" }, properties = { tag = "8" } },
     { rule = { class = ".*potify.*" }, properties = { tag = "8" } },
