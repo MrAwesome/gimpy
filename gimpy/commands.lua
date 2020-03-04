@@ -8,7 +8,6 @@ commands.signal_desktop = "signal-desktop &> /dev/null "
 commands.paste = 'xdotool getwindowfocus key --window %1 shift click 2'
 commands.chat = globals.terminal .. " -title finch -e bash -c finch"
 commands.notes = globals.terminal .. " -title hnb -e bash -c hnb"
-commands.wlclient = globals.terminal .. " -title wicd-curses -e bash -c wicd-curses"
 commands.filebrowser = "dbus-launch nautilus --no-desktop --browser"
 commands.screenshot = "maim -e 'mv $f ~/screenshots'"
 commands.screenshot_draw  = "sleep 1; maim -s /tmp/$(date +'%Y-%m-%d_%H:%M:%S').png"
@@ -81,8 +80,8 @@ commands.spotify.nextsong = "playerctl next"
 
 -- Sound Commands
 commands.soundcontrol = globals.float_terminal_cmd .. " -c pulsemixer"
-commands.masterdown = "pulsemixer --change-volume +5 &> /dev/null"
-commands.masterup = "pulsemixer --change-volume +5 &> /dev/null"
+commands.masterdown = "pulsemixer --change-volume -3 &> /dev/null"
+commands.masterup = "pulsemixer --change-volume +3 &> /dev/null"
 commands.togglemute = "pulsemixer --toggle-mute &> /dev/null"
 
 -- Default music player

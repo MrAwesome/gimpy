@@ -5,7 +5,7 @@ require("awful.autofocus")
 
 local globals = require("gimpy/globals")
 
-local floating_client_rules = { 
+local floating_client_rules = {
   rule_any = {
     instance = {
       "DTA",  -- Firefox addon DownThemAll.
@@ -34,19 +34,28 @@ local floating_client_rules = {
       "AlarmWindow",  -- Thunderbird's calendar.
       "pop-up",     -- e.g. Google Chrome's (detached) Developer Tools.
     }
-  }, 
-  properties = { floating = true } 
+  },
+  properties = { floating = true }
+}
+
+local zero_border_client_rules = {
+  rule_any = {
+    class = {
+      ".*inecraft.*",
+    },
+  },
+  properties = { border_width = 0 }
 }
 
 local rules = {}
 
 -- Rules to apply to new clients (through the "manage" signal).
-rules.set_all_client_rules = function (clientkeys, clientbuttons) 
+rules.set_all_client_rules = function (clientkeys, clientbuttons)
   awful.rules.rules = {
     -- All clients will match this rule.
-    { 
-      rule = { }, 
-      properties = { 
+    {
+      rule = { },
+      properties = {
         border_width = beautiful.border_width,
         border_color = beautiful.border_normal,
         focus = awful.client.focus.filter,
@@ -60,10 +69,11 @@ rules.set_all_client_rules = function (clientkeys, clientbuttons)
 
     -- Floating clients.
     floating_client_rules,
+    zero_border_client_rules,
 
     -- NO TITLEBARS EGGMAN
-    { 
-      rule_any = { type = { "normal", "dialog" } }, 
+    {
+      rule_any = { type = { "normal", "dialog" } },
       properties = { titlebars_enabled = false }
     },
 

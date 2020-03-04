@@ -227,11 +227,11 @@ keybindings.get_global_user_command_keybindings = function ()
 
   -- Volume bindings
   key({ mc, "Shift" }, "a", spawn(commands.soundcontrol)),
-  key({ mc }, "y", spawn(commands.masterdown)),
-  key({ mc }, "u", spawn(commands.masterup)),
-  key({ }, "XF86AudioLowerVolume", spawn(commands.masterdown)),
-  key({ }, "XF86AudioRaiseVolume", spawn(commands.masterup)),
-  key({ }, "XF86AudioMute", spawn(commands.togglemute))
+  key({ mc }, "y", shell(commands.masterdown)),
+  key({ mc }, "u", shell(commands.masterup)),
+  key({ }, "XF86AudioLowerVolume", shell(commands.masterdown)),
+  key({ }, "XF86AudioRaiseVolume", shell(commands.masterup)),
+  key({ }, "XF86AudioMute", shell(commands.togglemute))
   )
 end
 
