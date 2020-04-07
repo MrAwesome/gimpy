@@ -85,6 +85,8 @@ rules.set_all_client_rules = function (clientkeys, clientbuttons)
     { rule = { name = globals.work_terminal_name }, properties = { tag = "2" } },
     { rule = { name = "Signal" }, properties = { tag = "3" } },
     { rule = { class = ".*inecraft.*" }, properties = { tag = "4" } },
+    { rule = { class = ".*[Ss]team.*" }, properties = { tag = "4" } },
+    { rule = { class = ".*eam [Ff]ortress.*" }, properties = { tag = "4" } },
     { rule = { name = ".*potify.*" }, properties = { tag = "8" } },
     { rule = { class = ".*potify.*" }, properties = { tag = "8" } },
   }

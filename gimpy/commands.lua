@@ -55,6 +55,7 @@ commands.respawn_cmd_shell =
 commands.echo_awk_print = commands.xdotool_echo .. commands.awk_print
 commands.terminal_white = globals.terminal .. " -bg white -fg black"
 commands.minecraft = "minecraft-launcher"
+commands.steam = "steam"
 
 -- Alias-style macros
 commands.tmux_screen_switch = "xdotool key ctrl+b l"
