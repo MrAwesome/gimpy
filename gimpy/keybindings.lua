@@ -211,6 +211,9 @@ keybindings.get_global_user_command_keybindings = function ()
   key({ mc }, "p", shell(commands.pomodoro)),
   key({ mc, "Shift" }, "p", shell(globals.terminal .. " -c python3")),
 
+  key({ mc, "Shift" }, "n", shell(commands.networking_wifi)),
+
+
   -- Paste
   key({ "Shift" }, "XF86Eject", shell(commands.paste)),
   key({ "Shift" }, "F8", shell(commands.paste)),
