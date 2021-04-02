@@ -10,7 +10,7 @@ startup_commands.run_startup_commands = function ()
   awful.spawn.easy_async("setxkbmap -option caps:escape")
 
   screen.tags[1]:view_only()
-  awful.spawn.easy_async('pgrep -f brave', function (stdout, stderr, exitreason, exitcode)
+  awful.spawn.easy_async('pgrep -f firefox', function (stdout, stderr, exitreason, exitcode)
     if exitcode > 0 then
       awful.spawn.easy_async_with_shell(commands.browser)
     end

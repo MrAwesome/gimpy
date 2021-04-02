@@ -1,7 +1,7 @@
 local globals = require("gimpy/globals")
 
 local commands = {}
-commands.browser = "brave &> /dev/null "
+commands.browser = "firefox &> /dev/null "
 commands.signal_desktop = "signal-desktop &> /dev/null "
 -- commands.slow_paste     = 
 --   'xvkbd -no-jump-pointer -xsendevent -text "\\D1`xsel`" 2>/dev/null'
