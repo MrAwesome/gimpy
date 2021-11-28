@@ -1,6 +1,8 @@
 local awful = require("awful")
 local commands = require("gimpy/commands")
 local globals = require("gimpy/globals")
+local menu = require("gimpy/menu")
+local menubar = require("menubar")
 
 -- Utility functions {{{
 local key = awful.key
@@ -31,8 +33,6 @@ end
 
 keybindings.get_default_client_keybindings = function ()
   return awful.util.table.join(
-    key({ mc, "Control" }, "r", awesome.restart),
-    key({ mc, "Shift" }, "q", awesome.quit),
     key({ mc }, "f",
       function (c)
         c.fullscreen = not c.fullscreen
@@ -80,6 +80,8 @@ end
 
 keybindings.get_default_global_keybindings = function () 
   return awful.util.table.join(
+  key({ mc, "Control" }, "r", awesome.restart),
+  key({ mc, "Shift" }, "q", awesome.quit),
   key({ mc }, "Left", awful.tag.viewprev),
   key({ mc }, "Right", awful.tag.viewnext),
   key({ mc }, "`", awful.tag.viewprev),
@@ -89,14 +91,14 @@ keybindings.get_default_global_keybindings = function ()
   key({ mc }, "j",
     function ()
       awful.client.focus.byidx( 1)
-      if client.focus then client.focus:raise() end
+      if awful.client.focus then awful.client.focus:raise() end
     end),
   key({ mc }, "k",
     function ()
       awful.client.focus.byidx(-1)
-      if client.focus then client.focus:raise() end
+      if awful.client.focus then awful.client.focus:raise() end
     end),
-  key({ mc, "Shift" }, "m", function () mymainmenu:show(true)    end),
+  key({ mc, "Shift" }, "m", function () menu.mymainmenu:show(true)    end),
 
   -- Layout manipulation
   key({ mc, "Shift" }, "j", 
@@ -112,8 +114,8 @@ keybindings.get_default_global_keybindings = function ()
   key({ mc }, "Tab",
     function ()
       awful.client.focus.history.previous()
-      if client.focus then
-        client.focus:raise()
+      if awful.client.focus then
+        awful.client.focus:raise()
       end
     end),
 
@@ -135,7 +137,7 @@ keybindings.get_default_global_keybindings = function ()
       local c = awful.client.restore()
       -- Focus restored client
       if c then
-        client.focus = c
+        awful.client.focus = c
         c:raise()
       end
     end,
@@ -202,7 +204,6 @@ keybindings.get_global_user_command_keybindings = function ()
   key({ mc, "Control" }, "Return", spawn(commands.terminal_white)),
   key({ mc }, "b", shell(commands.browser)),
   key({ mc }, "s", shell(commands.spotify.launch)),
-  key({ mc }, "z", set_spotify_text),
   key({ mc, "Control" }, "w", shell(commands.reconnect_wireless)),
   key({ mc }, "v", spawn(commands.alarm)),
   key({ mc, "Shift"   }, "v", 
@@ -210,6 +211,8 @@ keybindings.get_global_user_command_keybindings = function ()
   key({ mc, "Control" }, "v", shell(commands.lockscreen)),
   key({ mc }, "p", shell(commands.pomodoro)),
   key({ mc, "Shift" }, "p", shell(globals.terminal .. " -c python3")),
+
+  key({ mc, "Shift", "Mod1" }, "k", shell(commands.kill_browser)),
 
   key({ mc, "Shift" }, "n", shell(commands.networking_wifi)),
 
@@ -240,7 +243,7 @@ keybindings.get_global_user_command_keybindings = function ()
 end
 
 keybindings.get_number_keys = function ()
-  number_keys = {}
+  local number_keys = {}
   for i = 1, 9 do
     number_keys = awful.util.table.join(number_keys,
       -- View tag only.
@@ -268,10 +271,10 @@ keybindings.get_number_keys = function ()
       -- Move client to tag.
       awful.key({ mc, "Shift" }, "#" .. i + 9,
         function ()
-          if client.focus then
-            local tag = client.focus.screen.tags[i]
+          if awful.client.focus then
+            local tag = awful.client.focus.screen.tags[i]
             if tag then
-              client.focus:move_to_tag(tag)
+              awful.client.focus:move_to_tag(tag)
             end
           end
         end,
@@ -280,10 +283,10 @@ keybindings.get_number_keys = function ()
       -- Toggle tag on focused client.
       awful.key({ mc, "Control", "Shift" }, "#" .. i + 9,
         function ()
-          if client.focus then
-            local tag = client.focus.screen.tags[i]
+          if awful.client.focus then
+            local tag = awful.client.focus.screen.tags[i]
             if tag then
-              client.focus:toggle_tag(tag)
+              awful.client.focus:toggle_tag(tag)
             end
           end
         end,
