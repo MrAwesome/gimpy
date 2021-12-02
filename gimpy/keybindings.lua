@@ -271,10 +271,10 @@ keybindings.get_number_keys = function ()
       -- Move client to tag.
       awful.key({ mc, "Shift" }, "#" .. i + 9,
         function ()
-          if awful.client.focus then
-            local tag = awful.client.focus.screen.tags[i]
+          if client.focus then
+            local tag = client.focus.screen.tags[i]
             if tag then
-              awful.client.focus:move_to_tag(tag)
+              client.focus:move_to_tag(tag)
             end
           end
         end,
@@ -283,10 +283,10 @@ keybindings.get_number_keys = function ()
       -- Toggle tag on focused client.
       awful.key({ mc, "Control", "Shift" }, "#" .. i + 9,
         function ()
-          if awful.client.focus then
-            local tag = awful.client.focus.screen.tags[i]
+          if client.focus then
+            local tag = client.focus.screen.tags[i]
             if tag then
-              awful.client.focus:toggle_tag(tag)
+              client.focus:toggle_tag(tag)
             end
           end
         end,
