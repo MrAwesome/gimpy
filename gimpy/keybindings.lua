@@ -91,12 +91,12 @@ keybindings.get_default_global_keybindings = function ()
   key({ mc }, "j",
     function ()
       awful.client.focus.byidx( 1)
-      if awful.client.focus then awful.client.focus:raise() end
+      if client.focus then client.focus:raise() end
     end),
   key({ mc }, "k",
     function ()
       awful.client.focus.byidx(-1)
-      if awful.client.focus then awful.client.focus:raise() end
+      if client.focus then client.focus:raise() end
     end),
   key({ mc, "Shift" }, "m", function () menu.mymainmenu:show(true)    end),
 
