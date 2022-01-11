@@ -89,6 +89,8 @@ rules.set_all_client_rules = function (clientkeys, clientbuttons)
     { rule = { class = ".*eam [Ff]ortress.*" }, properties = { tag = "4" } },
     { rule = { name = ".*potify.*" }, properties = { tag = "8" } },
     { rule = { class = ".*potify.*" }, properties = { tag = "8" } },
+    { rule = { class = "Discord" }, properties = { tag = "8" } },
+    { rule = { name = "Discord" }, properties = { tag = "8" } },
   }
 end
 
