@@ -216,6 +216,7 @@ keybindings.get_global_user_command_keybindings = function ()
 
   key({ mc, "Shift" }, "n", shell(commands.networking_wifi)),
 
+  key({ mc, "Mod1" }, "l", shell(commands.linepw)),
 
   -- Paste
   key({ "Shift" }, "XF86Eject", shell(commands.paste)),
