@@ -114,9 +114,7 @@ keybindings.get_default_global_keybindings = function ()
   key({ mc }, "Tab",
     function ()
       awful.client.focus.history.previous()
-      if awful.client.focus then
-        awful.client.focus:raise()
-      end
+      if client.focus then client.focus:raise() end
     end),
 
   -- Layout bindings
