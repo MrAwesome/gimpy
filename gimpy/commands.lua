@@ -7,7 +7,6 @@ commands.signal_desktop = "signal-desktop &> /dev/null "
 -- commands.slow_paste     = 
 --   'xvkbd -no-jump-pointer -xsendevent -text "\\D1`xsel`" 2>/dev/null'
 commands.paste = 'xdotool getwindowfocus key --window %1 shift click 2'
-commands.chat = globals.terminal .. " -title finch -e bash -c finch"
 commands.notes = globals.terminal .. " -title hnb -e bash -c hnb"
 commands.filebrowser = "dbus-launch nautilus --no-desktop --browser"
 commands.networking_wifi = "sudo ruwi -m dmenu wifi connect -a"

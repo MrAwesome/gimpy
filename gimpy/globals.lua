@@ -20,6 +20,9 @@ globals.work_terminal_cmd = make_terminal_cmd(globals.base_terminal, globals.cmd
 globals.screen_one_terminal_name = "SCREEN_ONE_TERMINAL"
 globals.screen_one_terminal_cmd = make_terminal_cmd(globals.base_terminal, globals.cmd_shell, globals.screen_one_terminal_name)
 
+globals.screen_four_terminal_name = "SCREEN_FOUR_TERMINAL"
+globals.screen_four_terminal_cmd = make_terminal_cmd(globals.base_terminal, globals.cmd_shell, globals.screen_four_terminal_name)
+
 globals.float_terminal_name = "FLOAT_TERMINAL"
 globals.float_terminal_cmd = make_terminal_cmd(globals.base_terminal, globals.cmd_shell, globals.float_terminal_name)
 

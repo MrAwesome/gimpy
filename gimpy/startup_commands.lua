@@ -28,6 +28,13 @@ startup_commands.run_startup_commands = function ()
       awful.spawn.easy_async_with_shell(commands.signal_desktop)
     end
   end)
+
+  screen.tags[4]:view_only()
+  awful.spawn.easy_async('pgrep -f weechat', function (stdout, stderr, exitreason, exitcode)
+    if exitcode > 0 then
+      awful.spawn.easy_async_with_shell(globals.screen_four_terminal_cmd .. "-ic 'weechat'")
+    end
+  end)
 --   awful.spawn.easy_async('pgrep -f CODE_TODO', function (stdout, stderr, exitreason, exitcode)
 --     if exitcode > 0 then
 --       awful.spawn.easy_async_with_shell(globals.work_terminal_cmd .. " -ic 'sleep .1 && echo CODE_TODO && vim code_todo.txt'")

@@ -201,6 +201,7 @@ keybindings.get_global_user_command_keybindings = function ()
   key({ mc, "Shift"   }, "Return", spawn(globals.work_terminal_cmd)),
   key({ mc, "Control" }, "Return", spawn(commands.terminal_white)),
   key({ mc }, "b", shell(commands.browser)),
+  key({ mc, "Mod1" }, "b", shell(commands.chat)),
   key({ mc }, "s", shell(commands.spotify.launch)),
   key({ mc, "Control" }, "w", shell(commands.reconnect_wireless)),
   key({ mc }, "v", spawn(commands.alarm)),

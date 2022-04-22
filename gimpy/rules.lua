@@ -83,6 +83,7 @@ rules.set_all_client_rules = function (clientkeys, clientbuttons)
     { rule = { class = "Google Chrome" }, properties = { tag = "1" } },
     { rule = { name = globals.screen_one_terminal_name }, properties = { tag = "1" } },
     { rule = { name = globals.work_terminal_name }, properties = { tag = "2" } },
+    { rule = { name = globals.screen_four_terminal_name }, properties = { tag = "4" } },
     { rule = { name = "Signal" }, properties = { tag = "3" } },
     { rule = { class = ".*inecraft.*" }, properties = { tag = "4" } },
     { rule = { class = ".*[Ss]team.*" }, properties = { tag = "4" } },
