@@ -21,6 +21,8 @@ commands.pomodoro_prompt = "notify-send -u critical -t 2000 'mod4-p to take a po
 commands.pomodoro_warning = "notify-send -t 2000 '1 minute left in pomodoro'; "
 commands.pomodoro_notify = "notify-send -t 2000 'started pomodoro'; "
 commands.lockscreen = "xlock -mode hyper -erasedelay 0 -usefirst && " .. commands.pomodoro_prompt
+commands.translate_to_english  = globals.float_terminal_cmd .. " -c 'xsel; echo; xsel | trans -b -t en-US | tee >(xsel); read'"
+commands.translate_to_mandarin = globals.float_terminal_cmd .. " -c 'xsel; echo; xsel | trans -b -t zh-TW | tee >(xsel); read'"
 commands.pomodoro = 
   commands.pomodoro_kill .. 
   commands.pomodoro_notify .. 

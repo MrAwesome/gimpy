@@ -182,12 +182,11 @@ keybindings.get_global_user_command_keybindings = function ()
 
   -- LXC settings echo
   key({ mc, "Shift" }, "x", shell(commands.echo_lxc_settings)),
-  key({ mc, "Shift" }, "s", shell(commands.respawn_cmd_shell)),
   key({ mc, "Control" }, "x", shell(commands.echo_awk_print)),
 
   -- Standard program
-  key({ mc, "Control" }, "s", shell(commands.screenshot)),
-  key({ mc, "Mod1" }, "s", shell(commands.screenshotwindow)),
+  key({ mc }, "s", shell(commands.translate_to_english)),
+  key({ mc, "Shift" }, "s", shell(commands.translate_to_mandarin)),
   key({ mc, "Shift" }, "o", spawn(commands.one_screen)),
   key({ mc, "Control" }, "o", spawn(commands.meeting_room)),
   key({ mc, "Mod1" }, "o", spawn(commands.two_screens)),
@@ -202,7 +201,7 @@ keybindings.get_global_user_command_keybindings = function ()
   key({ mc, "Control" }, "Return", spawn(commands.terminal_white)),
   key({ mc }, "b", shell(commands.browser)),
   key({ mc, "Mod1" }, "b", shell(commands.chat)),
-  key({ mc }, "s", shell(commands.spotify.launch)),
+  key({ mc, "Control" }, "s", shell(commands.spotify.launch)),
   key({ mc, "Control" }, "w", shell(commands.reconnect_wireless)),
   key({ mc }, "v", spawn(commands.alarm)),
   key({ mc, "Shift"   }, "v", 
