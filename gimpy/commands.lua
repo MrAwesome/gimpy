@@ -35,7 +35,7 @@ commands.pingoog =
   "then echo; else echo BROKAN; " ..
   "fi"
 commands.pingdev = 
-  "if timeout 1 ping -6 -c 1 devbig577.prn2.facebook.com &> /dev/null; " ..
+  "if timeout 1 ping -c 1 10.8.0.1 &> /dev/null; " ..
   "then echo VPN; else echo; " ..
   "fi"
 
