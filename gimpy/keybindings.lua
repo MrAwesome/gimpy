@@ -8,13 +8,13 @@ local menubar = require("menubar")
 local key = awful.key
 local mc = globals.modkey
 
-local spawn = function (cmd) 
+local spawn = function (cmd)
   return function ()
     awful.spawn(cmd)
   end
 end
 
-local shell = function (cmd) 
+local shell = function (cmd)
   return function ()
     awful.spawn.with_shell(cmd)
   end
@@ -44,11 +44,11 @@ keybindings.get_default_client_keybindings = function ()
       function (c) c:kill() end,
       {description = "close", group = "client"}
     ),
-    key({ mc, "Control" }, "space",  
+    key({ mc, "Control" }, "space",
       awful.client.floating.toggle,
       {description = "toggle floating", group = "client"}
     ),
-    key({ mc, "Control" }, "Return", 
+    key({ mc, "Control" }, "Return",
       function (c) c:swap(awful.client.getmaster()) end,
       {description = "move to master", group = "client"}
     ),
@@ -56,7 +56,7 @@ keybindings.get_default_client_keybindings = function ()
       function (c) c:move_to_screen() end,
       {description = "move to screen", group = "client"}
     ),
-    key({ mc }, "t",    
+    key({ mc }, "t",
       function (c) c.ontop = not c.ontop end,
       {description = "toggle keep on top", group = "client"}
     ),
@@ -78,7 +78,7 @@ keybindings.get_default_client_keybindings = function ()
   )
 end
 
-keybindings.get_default_global_keybindings = function () 
+keybindings.get_default_global_keybindings = function ()
   return awful.util.table.join(
   key({ mc, "Control" }, "r", awesome.restart),
   key({ mc, "Shift" }, "q", awesome.quit),
@@ -101,15 +101,23 @@ keybindings.get_default_global_keybindings = function ()
   key({ mc, "Shift" }, "m", function () menu.mymainmenu:show(true)    end),
 
   -- Layout manipulation
-  key({ mc, "Shift" }, "j", 
+  key({ mc, "Shift" }, "j",
     function () awful.client.swap.byidx( 1)  end),
-  key({ mc, "Shift" }, "k", 
+  key({ mc, "Shift" }, "k",
     function () awful.client.swap.byidx(-1)  end),
-  key({ mc, "Control" }, "j", 
+  key({ mc, "Control" }, "j",
     function () awful.screen.focus_relative( 1) end),
-  key({ mc, "Control" }, "k", 
+  key({ mc, "Control" }, "k",
     function () awful.screen.focus_relative(-1) end),
-  key({ mc }, "i", 
+  key({ mc }, "z",
+    function () awful.screen.focus_relative(-1) end),
+  key({ mc, "Shift" }, "Escape",
+    function () awful.screen.focus_relative(-1) end),
+  key({ mc }, "F1",
+    function () awful.screen.focus(1) end),
+  key({ mc }, "F2",
+    function () awful.screen.focus(2) end),
+  key({ mc }, "i",
     awful.client.urgent.jumpto),
   key({ mc }, "Tab",
     function ()
@@ -124,10 +132,10 @@ keybindings.get_default_global_keybindings = function ()
   key({ mc, "Shift" }, "l", function () awful.tag.incnmaster(-1) end),
   key({ mc, "Control" }, "h", function () awful.tag.incncol( 1) end),
   key({ mc, "Control" }, "l", function () awful.tag.incncol(-1) end),
-  key({ mc }, "space", 
+  key({ mc }, "space",
     function () awful.layout.inc(awful.layout.layouts,  1) end
   ),
-  key({ mc, "Shift"   }, "space", 
+  key({ mc, "Shift"   }, "space",
     function () awful.layout.inc(awful.layout.layouts, -1) end
   ),
   key({ mc, "Control" }, "n",
@@ -143,12 +151,12 @@ keybindings.get_default_global_keybindings = function ()
   ),
 
   -- Prompt
-  key({ mc }, "r", 
+  key({ mc }, "r",
     function () awful.screen.focused().mypromptbox:run() end,
     {description = "run prompt", group = "launcher"}
   ),
 
-  key({ mc }, "x",
+  key({ mc, "Shift" }, "x",
     function ()
       awful.prompt.run {
         prompt     = "Run Lua code: ",
@@ -160,14 +168,14 @@ keybindings.get_default_global_keybindings = function ()
     {description = "lua execute prompt", group = "awesome"}
   ),
   -- Menubar
-  key({ mc, "Shift" }, "r", 
+  key({ mc, "Shift" }, "r",
     function() menubar.show() end,
     {description = "show the menubar", group = "launcher"}
   )
   )
 end
 
-keybindings.get_global_user_command_keybindings = function () 
+keybindings.get_global_user_command_keybindings = function ()
   return awful.util.table.join(
 
   -- Keyboard layout modifications
@@ -181,7 +189,7 @@ keybindings.get_global_user_command_keybindings = function ()
   key({ "Shift" }, "XF86MonBrightnessDown", shell(commands.brightness_min)),
 
   -- LXC settings echo
-  key({ mc, "Shift" }, "x", shell(commands.echo_lxc_settings)),
+  key({ mc, "Shift", "Control" }, "x", shell(commands.echo_lxc_settings)),
   key({ mc, "Control" }, "x", shell(commands.echo_awk_print)),
 
   -- Standard program
@@ -204,7 +212,7 @@ keybindings.get_global_user_command_keybindings = function ()
   key({ mc, "Control" }, "s", shell(commands.spotify.launch)),
   key({ mc, "Control" }, "w", shell(commands.reconnect_wireless)),
   key({ mc }, "v", spawn(commands.alarm)),
-  key({ mc, "Shift"   }, "v", 
+  key({ mc, "Shift"   }, "v",
     shell(commands.spotify.pause .. "; " .. commands.lockscreen)),
   key({ mc, "Control" }, "v", shell(commands.lockscreen)),
   key({ mc }, "p", shell(commands.pomodoro)),

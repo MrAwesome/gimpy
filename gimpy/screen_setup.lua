@@ -137,7 +137,6 @@ local function get_per_screen_setup_func (widgets)
 	spacer,
         widgets.musicwidget,
         widgets.pingoogwidget,
-        widgets.pingdevwidget,
         wibox.widget.textclock(),
         s.mylayoutbox,
       },
