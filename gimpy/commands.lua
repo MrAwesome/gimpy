@@ -1,7 +1,7 @@
 local globals = require("gimpy/globals")
 
 local commands = {}
-commands.browser = "prime-run firefox &> /dev/null "
+commands.browser = "~/bin/run-browser.sh "
 commands.kill_browser = "killall firefox "
 commands.signal_desktop = "signal-desktop &> /dev/null "
 -- commands.slow_paste     = 

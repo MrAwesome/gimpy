@@ -218,6 +218,11 @@ keybindings.get_global_user_command_keybindings = function ()
   key({ mc }, "p", shell(commands.pomodoro)),
   key({ mc, "Shift" }, "p", shell(globals.terminal .. " -c python3")),
 
+  -- Learn some Taiwanese
+  key({ mc, "Shift" }, "t", shell(commands.browser .. " 'https://www.youtube.com/playlist?list=PLWtS9zTL-EGOzcWAxG1oxlZZ_EJxLc9gK'")),
+  key({ mc, "Control" }, "t", shell(commands.browser .. " 'https://www.youtube.com/@user-rv4ei9md3c'")),
+
+
   key({ mc, "Shift", "Mod1" }, "k", shell(commands.kill_browser)),
 
   key({ mc, "Shift" }, "n", shell(commands.networking_wifi)),
