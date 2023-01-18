@@ -11,7 +11,7 @@ globals.make_terminal_command = make_terminal_command
 
 globals.modkey = "Mod4"
 globals.cmd_shell = "zsh"
-globals.base_terminal = "alacritty "
+globals.base_terminal = "urxvt "
 globals.terminal = globals.base_terminal .. "-e " .. globals.cmd_shell .. " "
 
 globals.work_terminal_name = "WORK_TERMINAL"
