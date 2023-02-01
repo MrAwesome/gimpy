@@ -6,11 +6,17 @@ commands.kill_browser = "killall firefox "
 commands.signal_desktop = "signal-desktop &> /dev/null "
 -- commands.slow_paste     = 
 --   'xvkbd -no-jump-pointer -xsendevent -text "\\D1`xsel`" 2>/dev/null'
-commands.paste = 'xdotool getwindowfocus key --window %1 shift click 2'
+-- Doesn't work correctly:
+-- commands.paste = 'xdotool getwindowfocus key --window %1 shift click 2'
+--
+
+commands.paste = "~/bin/get_window_paste_xdotool_command.sh"
+
 commands.notes = globals.terminal .. " -title hnb -e bash -c hnb"
 commands.filebrowser = "dbus-launch nautilus --no-desktop --browser"
 commands.networking_wifi = "sudo ruwi -m dmenu wifi connect -a"
 commands.linepw = "xsel < ~/.linepw"
+commands.emailaddr = "xsel < ~/.emailaddr"
 commands.screenshot = "maim ~/screenshots/$(date +'%Y-%m-%d_%H:%M:%S').png"
 commands.screenshot_draw  = "sleep 1; maim -s ~/screenshots/$(date +'%Y-%m-%d_%H:%M:%S').png"
 commands.screenshot_active_window  = "maim -u -e 'mv $f ~/screenshots'"

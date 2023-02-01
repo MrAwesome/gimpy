@@ -228,10 +228,12 @@ keybindings.get_global_user_command_keybindings = function ()
   key({ mc, "Shift" }, "n", shell(commands.networking_wifi)),
 
   key({ mc, "Mod1" }, "l", shell(commands.linepw)),
+  key({ mc, "Mod1" }, "g", shell(commands.emailaddr)),
 
   -- Paste
   key({ "Shift" }, "XF86Eject", shell(commands.paste)),
   key({ "Shift" }, "F8", shell(commands.paste)),
+  key({ "Shift" }, "F9", shell(commands.paste)),
 
   -- Music bindings
   key({ mc }, "q", shell(commands.musicplayer.toggle)),
