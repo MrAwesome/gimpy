@@ -4,10 +4,12 @@ local awful = require("awful")
 
 local startup_commands = {}
 
+local function emptyFunc() end
+
 startup_commands.run_startup_commands = function ()
   local screen = mouse.screen
-  awful.spawn.easy_async("xmodmap .xmodmaprc")
-  awful.spawn.easy_async("setxkbmap -option caps:escape")
+  awful.spawn.easy_async("xmodmap .xmodmaprc", emptyFunc)
+  awful.spawn.easy_async("setxkbmap -option caps:escape", emptyFunc)
 
   screen.tags[1]:view_only()
   awful.spawn.easy_async('pgrep -f firefox', function (stdout, stderr, exitreason, exitcode)
