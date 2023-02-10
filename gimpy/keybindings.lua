@@ -200,6 +200,7 @@ keybindings.get_global_user_command_keybindings = function ()
   key({ mc, "Mod1" }, "o", spawn(commands.two_screens)),
   key({ mc, "Mod1", "Shift" }, "o", spawn(commands.hdmi)),
   key({ mc, "Shift" }, "i", spawn(commands.minecraft)),
+  key({ mc          }, "F12", spawn(commands.join_class)),
   key({ mc, "Control" }, "i", spawn(commands.steam)),
   key({ }, "Print", shell(commands.screenshot)),
   key({ "Shift" }, "Print", shell(commands.screenshot_draw)),

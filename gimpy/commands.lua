@@ -66,6 +66,7 @@ commands.echo_awk_print = commands.xdotool_echo .. commands.awk_print
 commands.terminal_white = globals.terminal .. " -bg white -fg black"
 commands.minecraft = "prime-run minecraft-launcher"
 commands.steam = "steam"
+commands.join_class = "~/bin/join_class.sh "
 
 -- Alias-style macros
 commands.tmux_screen_switch = "xdotool key ctrl+b l"
