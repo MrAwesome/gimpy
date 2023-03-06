@@ -43,6 +43,13 @@ local function set_pingoog_text(widget)
   end
 end
 
+local function set_pingdev_text(widget)
+  return function ()
+    run_cmd_and_set_widget_text(commands.pingdev, widget, '#00FF00')
+  end
+end
+
+
 local function set_battery_text(widget)
   return function ()
     battery.update_battery_widget_text(widget)
@@ -54,6 +61,7 @@ local widget_timers = {}
 widget_timers.start_widget_timers = function (widgets) 
   initiate_and_start_timer_for_function(set_music_text(widgets.musicwidget), 5)
   initiate_and_start_timer_for_function(set_pingoog_text(widgets.pingoogwidget), 5)
+  initiate_and_start_timer_for_function(set_pingdev_text(widgets.pingdevwidget), 5)
   initiate_and_start_timer_for_function(set_battery_text(widgets.batterywidget), 5)
 end
 
