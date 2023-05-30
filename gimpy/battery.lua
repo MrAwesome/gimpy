@@ -24,6 +24,11 @@ local color_low = "#ff66cc"
 local function get_bat_state(acpi_line)
   local battstring = acpi_line:gsub('.* (%d+)%%.*', '%1')
   local percentage = tonumber(battstring)
+
+  if percentage == nil then
+    return nil
+  end
+
   local dir = 0
   local remtime = 0
   local idx = nil
@@ -79,7 +84,12 @@ local function get_battery_status_text(acpi_output)
   local output_string = " "
   acpi_lines = gears.string.split(acpi_output, "\n")
   for ind, acpi_line in pairs(acpi_lines) do
-    local percentage, dir, time = get_bat_state(acpi_line)
+    local bat_state = get_bat_state(acpi_line)
+    if bat_state == nil then
+      return ""
+    end
+    local percentage, dir, time = bat_state
+    
     local percentage_string = percentage.."%"
     if dir == -1 then
       prefix = "-"
