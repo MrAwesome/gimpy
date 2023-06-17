@@ -49,6 +49,16 @@ local zero_border_client_rules = {
 
 local rules = {}
 
+-- If there's no second+ screen, just use the primary one.
+local screen_count = screen.count()
+if screen_count > 1 then
+  second_screen_progs_go_here = 2
+else
+  second_screen_progs_go_here = 1
+end
+
+local ss = second_screen_progs_go_here
+
 -- Rules to apply to new clients (through the "manage" signal).
 rules.set_all_client_rules = function (clientkeys, clientbuttons)
   awful.rules.rules = {
@@ -79,19 +89,18 @@ rules.set_all_client_rules = function (clientkeys, clientbuttons)
 
     { rule = { class = "Firefox" }, properties = { tag = "1" } },
     { rule = { class = "Chromium" }, properties = { tag = "1" } },
-    { rule = { class = ".*Brave" }, properties = { tag = "1" } },
     { rule = { class = "Google Chrome" }, properties = { tag = "1" } },
     { rule = { name = globals.screen_one_terminal_name }, properties = { tag = "1" } },
     { rule = { name = globals.work_terminal_name }, properties = { tag = "2" } },
     { rule = { name = globals.screen_four_terminal_name }, properties = { tag = "4" } },
-    { rule = { name = "Signal" }, properties = { tag = "3" } },
+    { rule = { name = "Signal" }, properties = { tag = "3", screen = ss } },
     { rule = { class = ".*inecraft.*" }, properties = { tag = "4" } },
     { rule = { class = ".*[Ss]team.*" }, properties = { tag = "4" } },
     { rule = { class = ".*eam [Ff]ortress.*" }, properties = { tag = "4" } },
-    { rule = { name = ".*potify.*" }, properties = { tag = "8" } },
-    { rule = { class = ".*potify.*" }, properties = { tag = "8" } },
-    { rule = { class = "Discord" }, properties = { tag = "8" } },
-    { rule = { name = "Discord" }, properties = { tag = "8" } },
+    { rule = { name = "Spotify" }, properties = { tag = "8", screen = ss } },
+    { rule = { class = "Spotify" }, properties = { tag = "8", screen = ss } },
+    { rule = { class = "Discord" }, properties = { tag = "8", screen = ss } },
+    { rule = { name = "Discord" }, properties = { tag = "8", screen = ss } },
   }
 end
 
