@@ -25,14 +25,13 @@ local function get_bat_state(acpi_line)
   local battstring = acpi_line:gsub('.* (%d+)%%.*', '%1')
   local percentage = tonumber(battstring)
 
-  if percentage == nil then
-    return nil
-  end
-
   local dir = 0
-  local remtime = 0
+  local remtime = ""
   local idx = nil
-  if acpi_line:match("Charging") then
+
+  if percentage == nil then
+    -- nothing
+  elseif acpi_line:match("Charging") then
     dir = 1
     idx = acpi_line:find('until charged')
     if idx == nil then
@@ -47,7 +46,10 @@ local function get_bat_state(acpi_line)
     end
     remtime = acpi_line:sub(idx - 9, idx - 5)
   end
-  return percentage, dir, remtime
+
+  return {percentage = percentage,
+          dir = dir,
+          remtime = remtime}
 end
 
 local function getnextlim (num)
@@ -85,29 +87,43 @@ local function get_battery_status_text(acpi_output)
   acpi_lines = gears.string.split(acpi_output, "\n")
   for ind, acpi_line in pairs(acpi_lines) do
     local bat_state = get_bat_state(acpi_line)
-    if bat_state == nil then
-      return ""
-    end
-    local percentage, dir, time = bat_state
-    
+    local percentage = bat_state.percentage
+    local dir = bat_state.dir
+    local remtime = bat_state.remtime
+
+    --local percentage, dir, remtime = bat_state
+
     local percentage_string = percentage.."%"
     if dir == -1 then
       prefix = "-"
-      -- if percentage < nextlim then
-        -- notify_on_low(percentage)
-        -- nextlim = getnextlim(percentage)
-      -- end
     elseif dir == 1 then
       prefix = "+"
       nextlim = limits[1][1]
+    else
+      prefix = ""
     end
 
-    remaining = dir == 0 and "" or " ("..prefix..""..time..") "
+    if remtime == nil or dir == nil then
+      if remtime == nil then
+        print("remtime is nil")
+      else
+        print("remtime: "..remtime)
+      end
+      if dir == nil then
+        print("dir is nil")
+      else
+        print("dir: "..dir)
+      end
+      print("acpi_line: "..acpi_line)
+      print("percentage: "..percentage)
+    end
+
+    remaining = dir == 0 and "" or " ("..prefix..""..remtime..") "
 
     if percentage <= limits[1][1] then
       percentage_string = string.format(
-        "<span color='%s'> %s </span>", 
-        color_low, 
+        "<span color='%s'> %s </span>",
+        color_low,
         percentage.."%"
       )
     end
@@ -120,7 +136,7 @@ end
 local battery = {}
 
 battery.update_battery_widget_text = function (widget)
-  awful.spawn.easy_async('acpi -b', 
+  awful.spawn.easy_async('acpi -b',
     function (stdout, stderr, reason, exit_code)
       -- TODO: use a normal chomp function here
       local chomped = stdout:gsub('(.*)\n$', '%1')
