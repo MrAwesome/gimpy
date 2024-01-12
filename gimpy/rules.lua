@@ -96,6 +96,7 @@ rules.set_all_client_rules = function (clientkeys, clientbuttons)
     { rule = { name = "Signal" }, properties = { tag = "3", screen = ss } },
     { rule = { class = ".*inecraft.*" }, properties = { tag = "4" } },
     { rule = { name = "Team Fortress 2.*" }, properties = { tag = "4" } },
+    { rule = { name = "Red Dead.*" }, properties = { tag = "4" } },
     { rule = { class = ".*hl_linux.*" }, properties = { tag = "4" } },
     { rule = { class = ".*[Ss]team.*" }, properties = { tag = "5", screen = ss } },
     { rule = { name = "Spotify" }, properties = { tag = "7", screen = ss } },
