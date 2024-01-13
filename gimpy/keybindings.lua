@@ -109,8 +109,8 @@ keybindings.get_default_global_keybindings = function ()
     function () awful.screen.focus_relative( 1) end),
   key({ mc, "Control" }, "k",
     function () awful.screen.focus_relative(-1) end),
-  key({ mc }, "z",
-    function () awful.screen.focus_relative(-1) end),
+  --key({ mc }, "z",
+    --function () awful.screen.focus_relative(-1) end),
   key({ mc, "Shift" }, "Escape",
     function () awful.screen.focus_relative(-1) end),
   key({ mc }, "F1",
@@ -181,6 +181,9 @@ keybindings.get_global_user_command_keybindings = function ()
   -- Keyboard layout modifications
   key({ mc, "Control" }, "q", spawn(commands.qwerty)),
   key({ mc, "Control" }, "c", spawn(commands.colemak)),
+
+  -- Mousepad touch click
+  key({ mc }, "z", shell(commands.toggle_touchpad_click)),
 
   -- Screen modifications
   key({}, "XF86MonBrightnessUp", shell(commands.brightness_up)),
