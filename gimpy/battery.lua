@@ -92,6 +92,9 @@ local function get_battery_status_text(acpi_output)
     local remtime = bat_state.remtime
 
     --local percentage, dir, remtime = bat_state
+    if percentage == nil then
+      return nil
+    end
 
     local percentage_string = percentage.."%"
     if dir == -1 then

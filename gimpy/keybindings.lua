@@ -179,8 +179,8 @@ keybindings.get_global_user_command_keybindings = function ()
   return awful.util.table.join(
 
   -- Keyboard layout modifications
-  key({ mc, "Control" }, "q", spawn(commands.qwerty)),
-  key({ mc, "Control" }, "c", spawn(commands.colemak)),
+  --key({ mc, "Control" }, "q", spawn(commands.qwerty)),
+  --key({ mc, "Control" }, "c", spawn(commands.colemak)),
 
   -- Mousepad touch click
   key({ mc }, "z", shell(commands.toggle_touchpad_click)),
@@ -206,8 +206,11 @@ keybindings.get_global_user_command_keybindings = function ()
   key({ mc          }, "F12", spawn(commands.join_class)),
   key({ mc, "Control" }, "i", spawn(commands.steam)),
   key({ }, "Print", shell(commands.screenshot)),
+  key({ mc }, "F6", shell(commands.screenshot)),
   key({ "Shift" }, "Print", shell(commands.screenshot_draw)),
+  key({ mc, "Shift" }, "F6", shell(commands.screenshot_draw)),
   key({ "Control" }, "Print", shell(commands.screenshot_active_window)),
+  key({ mc, "Control" }, "F6", shell(commands.screenshot_active_window)),
   key({ mc }, "Return", spawn(globals.terminal)),
   key({ mc, "Shift"   }, "Return", spawn(globals.work_terminal_cmd)),
   key({ mc, "Control" }, "Return", spawn(commands.terminal_white)),
@@ -236,6 +239,7 @@ keybindings.get_global_user_command_keybindings = function ()
 
   -- Paste
   key({ "Shift" }, "XF86Eject", shell(commands.paste)),
+  key({ }, "XF86Launch1", shell(commands.paste)),
   key({ "Shift" }, "F8", shell(commands.paste)),
   key({ "Shift" }, "F9", shell(commands.paste)),
 
