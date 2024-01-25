@@ -107,10 +107,10 @@ rules.set_all_client_rules = function (clientkeys, clientbuttons)
       border_color = 0,
       size_hints_honor = false,
     } },
-    { rule = { name = "Spotify" }, properties = { tag = "7", screen = ss } },
-    { rule = { class = "Spotify" }, properties = { tag = "7", screen = ss } },
-    { rule = { class = "Discord" }, properties = { tag = "8", screen = ss } },
-    { rule = { name = "Discord" }, properties = { tag = "8", screen = ss } },
+    { rule = { name = "Spotify" }, properties = { tag = "8", screen = ss } },
+    { rule = { class = "Spotify" }, properties = { tag = "8", screen = ss } },
+    { rule = { class = "Discord" }, properties = { tag = "7", screen = ss } },
+    { rule = { name = "Discord" }, properties = { tag = "7", screen = ss } },
   }
 end
 
