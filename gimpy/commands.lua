@@ -46,6 +46,10 @@ commands.pingdev =
   "then echo VPN; else echo; " ..
   "fi"
 
+commands.checkgpu = "if ls -l /etc/X11/xorg.conf | grep amdgpu &> /dev/null; " ..
+  "then echo AMD; " ..
+  "fi"
+
 commands.one_screen = "/home/glenn/bin/screens/onescreen.sh"
 commands.meeting_room = "/home/glenn/bin/screens/meetingroom.sh"
 commands.two_screens = "/home/glenn/bin/screens/twoscreens.sh"

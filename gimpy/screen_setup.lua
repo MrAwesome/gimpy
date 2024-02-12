@@ -138,6 +138,7 @@ local function get_per_screen_setup_func (widgets)
         widgets.musicwidget,
         widgets.pingoogwidget,
         widgets.pingdevwidget,
+        widgets.gpu,
         wibox.widget.textclock(),
         s.mylayoutbox,
       },
