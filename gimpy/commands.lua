@@ -56,6 +56,7 @@ commands.two_screens = "/home/glenn/bin/screens/twoscreens.sh"
 commands.hdmi = "/home/glenn/bin/screens/hdmi.sh"
 
 commands.toggle_touchpad_click = "x=$(synclient | grep TapButton1 | awk '{print $3}'); synclient TapButton1=$((1-$x))"
+commands.toggle_touchpad = "x=$(synclient | grep TouchpadOff | awk '{print $3}'); synclient TouchpadOff=$((1-$x))"
 
 -- LXC settings
 commands.lxc_settings = 

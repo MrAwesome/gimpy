@@ -184,6 +184,8 @@ keybindings.get_global_user_command_keybindings = function ()
 
   -- Mousepad touch click
   key({ mc }, "z", shell(commands.toggle_touchpad_click)),
+  key({ mc, "Shift" }, "z", shell(commands.toggle_touchpad)),
+  key({}, "XF86TouchpadToggle", shell(commands.toggle_touchpad)),
 
   -- Screen modifications
   key({}, "XF86MonBrightnessUp", shell(commands.brightness_up)),
