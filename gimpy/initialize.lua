@@ -30,7 +30,9 @@ initialize.initialize = function ()
 
   signals.connect_all_signals()
   widget_timers.start_widget_timers(widgets)
-  startup_commands.run_startup_commands()
+  if not os.getenv("GIMPY_NO_STARTUP") then
+    startup_commands.run_startup_commands()
+  end
   customize_layout.initialize_custom_layout()
 end
 

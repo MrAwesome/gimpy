@@ -17,11 +17,18 @@ local function update_widget_text(widget, txt, color)
   end
 end
 
-local function run_cmd_and_set_widget_text(command, widget, color)
+local function run_cmd_and_set_widget_text(command, widget, color, colorcheck)
   awful.spawn.easy_async_with_shell(command,
-  function(stdout, stderr, reason, exit_code)
-    update_widget_text(widget, stdout, color)
-  end)
+    function(stdout, stderr, reason, exit_code)
+      if color == nil then
+        if colorcheck then
+          color = colorcheck(stdout)
+        else
+          color = "#FFFFFF"
+        end
+      end
+      update_widget_text(widget, stdout, color)
+    end)
 end
 
 local function initiate_and_start_timer_for_function(func, interval)
@@ -49,9 +56,19 @@ local function set_pingdev_text(widget)
   end
 end
 
+local function gpu_colorchecker(stdout) 
+    if string.match(stdout, "NVIDIA") then
+      return '#FF6600'
+    elseif string.match(stdout, "AMDGPU") then
+      return '#0066FF'
+    else
+      return '#0066FF'
+    end
+end
+
 local function set_gpu_text(widget)
   return function ()
-    run_cmd_and_set_widget_text(commands.checkgpu, widget, '#0066FF')
+    run_cmd_and_set_widget_text(commands.checkgpu, widget, nil, gpu_colorchecker)
   end
 end
 

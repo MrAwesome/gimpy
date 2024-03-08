@@ -39,16 +39,14 @@ commands.pomodoro =
   commands.pomodoro_prompt
 commands.pingoog = 
   "if timeout 1 ping -c 1 8.8.8.8 &> /dev/null; " ..
-  "then echo; else echo BROKAN; " ..
+  "then :; else echo BROKAN; " ..
   "fi"
 commands.pingdev = 
   "if timeout 1 ping -c 1 10.8.0.1 &> /dev/null; " ..
-  "then echo VPN; else echo; " ..
+  "then echo VPN; else :; " ..
   "fi"
 
-commands.checkgpu = "if ls -l /etc/X11/xorg.conf | grep amdgpu &> /dev/null; " ..
-  "then echo AMD; " ..
-  "fi"
+commands.checkgpu = '/home/glenn/bin/getgpumode.sh'
 
 commands.one_screen = "/home/glenn/bin/screens/onescreen.sh"
 commands.meeting_room = "/home/glenn/bin/screens/meetingroom.sh"

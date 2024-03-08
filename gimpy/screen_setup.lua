@@ -130,11 +130,7 @@ local function get_per_screen_setup_func (widgets)
       { 
         layout = wibox.layout.fixed.horizontal,
         wibox.widget.systray(),
-	spacer,
-	spacer,
-        widgets.batterywidget,
-	spacer,
-	spacer,
+        widgets.batterywidgetcontainer,
         widgets.musicwidget,
         widgets.pingoogwidget,
         widgets.pingdevwidget,

@@ -44,7 +44,7 @@ local function get_bat_state(acpi_line)
     if idx == nil then
       idx = 0
     end
-    remtime = acpi_line:sub(idx - 9, idx - 5)
+    remtime = acpi_line:sub(idx - 9, idx - 5):match("0*(.+)")
   end
 
   return {percentage = percentage,
@@ -83,9 +83,12 @@ end
 
 local function get_battery_status_text(acpi_output)
   local prefix = "⚝"
-  local output_string = " "
+  local output_string = ""
   acpi_lines = gears.string.split(acpi_output, "\n")
   for ind, acpi_line in pairs(acpi_lines) do
+    if string.match(acpi_line, "unavailable") then
+      goto continue
+    end
     local bat_state = get_bat_state(acpi_line)
     local percentage = bat_state.percentage
     local dir = bat_state.dir
@@ -121,7 +124,7 @@ local function get_battery_status_text(acpi_output)
       print("percentage: "..percentage)
     end
 
-    remaining = dir == 0 and "" or " ("..prefix..""..remtime..") "
+    remaining = dir == 0 and "" or " ("..prefix..""..remtime..")"
 
     if percentage <= limits[1][1] then
       percentage_string = string.format(
@@ -132,8 +135,9 @@ local function get_battery_status_text(acpi_output)
     end
 
     output_string = output_string..percentage_string..remaining.." // "
+    ::continue::
   end
-  return "[["..output_string:sub(1,-5).."]]"
+  return output_string:sub(1,-5)
 end
 
 local battery = {}
