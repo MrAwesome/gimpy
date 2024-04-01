@@ -111,6 +111,7 @@ rules.set_all_client_rules = function (clientkeys, clientbuttons)
     { rule = { class = "Spotify.*" }, properties = { tag = "8", screen = ss } },
     { rule = { class = "Discord" }, properties = { tag = "7", screen = ss } },
     { rule = { name = "Discord" }, properties = { tag = "7", screen = ss } },
+    { rule = { name = "WebCord" }, properties = { tag = "7", screen = ss } },
   }
 end
 

@@ -91,8 +91,8 @@ commands.brightness_min  = "xbacklight -set 5"
 commands.spotify = {}
 commands.spotify.launch = "spotify &> /dev/null"
 commands.spotify.currsong = "~/bin/spotify_get_song.sh"
-commands.spotify.toggle = "playerctl play-pause"
-commands.spotify.pause = "playerctl pause"
+commands.spotify.toggle = "playerctl -a play-pause"
+commands.spotify.pause = "playerctl -a pause"
 commands.spotify.prevsong = "playerctl previous"
 commands.spotify.nextsong = "playerctl next"
 

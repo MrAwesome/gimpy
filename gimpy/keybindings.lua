@@ -198,8 +198,8 @@ keybindings.get_global_user_command_keybindings = function ()
   key({ mc, "Control" }, "x", shell(commands.echo_awk_print)),
 
   -- Standard program
-  key({ mc }, "s", shell(commands.translate_to_english)),
-  key({ mc, "Shift" }, "s", shell(commands.translate_to_mandarin)),
+  --key({ mc }, "s", shell(commands.translate_to_english)),
+  --key({ mc, "Shift" }, "s", shell(commands.translate_to_mandarin)),
   key({ mc, "Shift" }, "o", spawn(commands.one_screen)),
   key({ mc, "Control" }, "o", spawn(commands.meeting_room)),
   key({ mc, "Mod1" }, "o", spawn(commands.two_screens)),

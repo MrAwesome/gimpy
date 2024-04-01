@@ -37,6 +37,20 @@ startup_commands.run_startup_commands = function ()
       awful.spawn.easy_async_with_shell(globals.screen_four_terminal_cmd .. "-ic 'weechat_tmux.sh'")
     end
   end)
+
+  screen.tags[4]:view_only()
+  awful.spawn.easy_async('pgrep -f steam', function (stdout, stderr, exitreason, exitcode)
+    if exitcode > 0 then
+      awful.spawn.easy_async_with_shell("steam")
+    end
+  end)
+
+  screen.tags[7]:view_only()
+  awful.spawn.easy_async('pgrep -f webcord', function (stdout, stderr, exitreason, exitcode)
+    if exitcode > 0 then
+      awful.spawn.easy_async_with_shell("webcord")
+    end
+  end)
 --   awful.spawn.easy_async('pgrep -f CODE_TODO', function (stdout, stderr, exitreason, exitcode)
 --     if exitcode > 0 then
 --       awful.spawn.easy_async_with_shell(globals.work_terminal_cmd .. " -ic 'sleep .1 && echo CODE_TODO && vim code_todo.txt'")
