@@ -241,7 +241,6 @@ keybindings.get_global_user_command_keybindings = function ()
 
   -- Paste
   key({ "Shift" }, "XF86Eject", shell(commands.paste)),
-  key({ }, "XF86Launch1", shell(commands.paste)),
   key({ "Shift" }, "F8", shell(commands.paste)),
   key({ "Shift" }, "F9", shell(commands.paste)),
 

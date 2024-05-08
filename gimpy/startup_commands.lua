@@ -24,6 +24,13 @@ startup_commands.run_startup_commands = function ()
 --    end
 --  end)
 
+  screen.tags[2]:view_only()
+  awful.spawn.easy_async('pgrep -f godot', function (stdout, stderr, exitreason, exitcode)
+    if exitcode > 0 then
+      awful.spawn.easy_async_with_shell("godot")
+    end
+  end)
+
   screen.tags[3]:view_only()
   awful.spawn.easy_async('pgrep -f signal-desktop', function (stdout, stderr, exitreason, exitcode)
     if exitcode > 0 then
@@ -42,6 +49,13 @@ startup_commands.run_startup_commands = function ()
   awful.spawn.easy_async('pgrep -f steam', function (stdout, stderr, exitreason, exitcode)
     if exitcode > 0 then
       awful.spawn.easy_async_with_shell("steam")
+    end
+  end)
+
+  screen.tags[4]:view_only()
+  awful.spawn.easy_async('pgrep -f lutris', function (stdout, stderr, exitreason, exitcode)
+    if exitcode > 0 then
+      awful.spawn.easy_async_with_shell("lutris")
     end
   end)
 
