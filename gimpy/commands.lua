@@ -50,8 +50,8 @@ commands.checkgpu = '/home/glenn/bin/getgpumode.sh'
 
 commands.one_screen = "/home/glenn/bin/screens/onescreen.sh"
 commands.meeting_room = "/home/glenn/bin/screens/meetingroom.sh"
-commands.two_screens = "/home/glenn/bin/screens/twoscreens.sh"
-commands.hdmi = "/home/glenn/bin/screens/hdmi.sh"
+--commands.two_screens = "/home/glenn/bin/screens/twoscreens.sh"
+commands.hdmi = "/home/glenn/bin/screens/hdmi_only.sh"
 
 commands.toggle_touchpad_click = "x=$(synclient | grep TapButton1 | awk '{print $3}'); synclient TapButton1=$((1-$x))"
 commands.toggle_touchpad = "x=$(synclient | grep TouchpadOff | awk '{print $3}'); synclient TouchpadOff=$((1-$x))"
@@ -91,7 +91,7 @@ commands.brightness_min  = "xbacklight -set 5"
 commands.spotify = {}
 commands.spotify.launch = "spotify &> /dev/null"
 commands.spotify.currsong = "~/bin/spotify_get_song.sh"
-commands.spotify.toggle = "playerctl -a play-pause"
+commands.spotify.toggle = "playerctl play-pause"
 commands.spotify.pause = "playerctl -a pause"
 commands.spotify.prevsong = "playerctl previous"
 commands.spotify.nextsong = "playerctl next"
