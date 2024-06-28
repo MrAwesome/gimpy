@@ -95,6 +95,8 @@ commands.spotify.toggle = "playerctl play-pause"
 commands.spotify.pause = "playerctl -a pause"
 commands.spotify.prevsong = "playerctl previous"
 commands.spotify.nextsong = "playerctl next"
+commands.spotify.rewind = "playerctl position 5-"
+commands.spotify.fastfw = "playerctl position 5+"
 
 -- Sound Commands
 commands.soundcontrol = globals.float_terminal_cmd .. " -c pulsemixer"
