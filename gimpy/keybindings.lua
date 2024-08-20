@@ -40,6 +40,13 @@ keybindings.get_default_client_keybindings = function ()
       end,
       {description = "toggle fullscreen", group = "client"}
     ),
+    key({ "Control" }, "F8",
+      function (c)
+        c.fullscreen = not c.fullscreen
+        c:raise()
+      end,
+      {description = "toggle fullscreen", group = "client"}
+    ),
     key({ mc }, "c",
       function (c) c:kill() end,
       {description = "close", group = "client"}
