@@ -87,6 +87,7 @@ rules.set_all_client_rules = function (clientkeys, clientbuttons)
       properties = { titlebars_enabled = false }
     },
 
+    { rule = { name = "Firefox" }, properties = { tag = "1" } },
     { rule = { class = "Firefox" }, properties = { tag = "1" } },
     { rule = { class = "Chromium" }, properties = { tag = "1" } },
     { rule = { class = "Google Chrome" }, properties = { tag = "1" } },
@@ -103,8 +104,8 @@ rules.set_all_client_rules = function (clientkeys, clientbuttons)
     { rule = { class = ".*Rockstar Games.*" }, properties = { tag = "4" } },
     { rule = { class = ".*hl_linux.*" }, properties = { tag = "4" } },
     { rule = { class = ".*[Ll]utris.*" }, properties = { tag = "5", screen = ss } },
-    { rule = { name = ".*[Ss]team.*" }, properties = { tag = "5", screen = ss } },
-    { rule = { class = ".*[Ss]team.*" }, properties = { tag = "5", screen = ss } },
+    { rule = { name = "^Steam$" }, properties = { tag = "5", screen = ss } },
+    { rule = { class = "^Steam$" }, properties = { tag = "5", screen = ss } },
     { rule = { name = "Spotify.*" }, properties = { tag = "8", screen = ss } },
     { rule = { class = "Spotify.*" }, properties = { tag = "8", screen = ss } },
     { rule = { class = "Discord" }, properties = { tag = "7", screen = ss } },
