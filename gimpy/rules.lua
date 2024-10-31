@@ -23,6 +23,8 @@ local floating_client_rules = {
       "pinentry",
       "veromix",
       ".*inecraft.*",
+      "Decktricks.*",
+      "GUI Test.*",
       "xtightvncviewer"
     },
 
