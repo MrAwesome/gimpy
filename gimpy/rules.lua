@@ -49,6 +49,16 @@ local zero_border_client_rules = {
   properties = { border_width = 0 }
 }
 
+local ontop_rules = {
+  rule_any = {
+    class = {
+      "Decktricks.*",
+    }
+  },
+  properties = { ontop = true }
+}
+
+
 local rules = {}
 
 -- If there's no second+ screen, just use the primary one.
@@ -122,6 +132,8 @@ rules.set_all_client_rules = function (clientkeys, clientbuttons)
       -- border_width = 0,
       -- border_color = 0,
       -- size_hints_honor = false,
+
+    ontop_rules,
   }
 end
 
