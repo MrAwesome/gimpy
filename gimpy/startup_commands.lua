@@ -60,9 +60,9 @@ startup_commands.run_startup_commands = function ()
   end)
 
   screen.tags[7]:view_only()
-  awful.spawn.easy_async('pgrep -if discord', function (stdout, stderr, exitreason, exitcode)
+  awful.spawn.easy_async('pgrep -if vesktop', function (stdout, stderr, exitreason, exitcode)
     if exitcode > 0 then
-      awful.spawn.easy_async_with_shell("discord")
+      awful.spawn.easy_async_with_shell("vesktop")
     end
   end)
 --   awful.spawn.easy_async('pgrep -f CODE_TODO', function (stdout, stderr, exitreason, exitcode)
