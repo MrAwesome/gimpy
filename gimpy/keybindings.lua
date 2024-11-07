@@ -232,7 +232,7 @@ keybindings.get_global_user_command_keybindings = function ()
     shell(commands.musicplayer.pause .. "; " .. commands.lockscreen)),
   key({ mc, "Control" }, "v", shell(commands.lockscreen)),
   key({ mc }, "p", shell(commands.pomodoro)),
-  key({ mc, "Shift" }, "p", shell(globals.terminal .. " -c python3")),
+  key({ mc, "Shift" }, "p", shell(globals.float_terminal_cmd .. " -c python3")),
 
   -- Learn some Taiwanese
   key({ mc, "Shift" }, "t", shell(commands.browser .. " 'https://www.youtube.com/playlist?list=PLWtS9zTL-EGOzcWAxG1oxlZZ_EJxLc9gK'")),
