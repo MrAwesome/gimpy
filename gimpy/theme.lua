@@ -3,7 +3,7 @@ local globals = require("gimpy/globals")
 
 local theme = {}
 
-theme.setup_theme = function ()
+theme.setup_theme = function()
   beautiful.init(globals.theme_config)
 end
 

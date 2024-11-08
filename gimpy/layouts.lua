@@ -21,7 +21,7 @@ end
 
 local layouts = {}
 
-layouts.set_awesome_layouts = function ()
+layouts.set_awesome_layouts = function()
   awful.layout.layouts = get_awesome_layouts()
 end
 

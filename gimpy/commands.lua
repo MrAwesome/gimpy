@@ -4,7 +4,7 @@ local commands = {}
 commands.browser = "~/bin/run-browser.sh "
 commands.kill_browser = "killall firefox "
 commands.signal_desktop = "signal-desktop &> /dev/null "
--- commands.slow_paste     = 
+-- commands.slow_paste     =
 --   'xvkbd -no-jump-pointer -xsendevent -text "\\D1`xsel`" 2>/dev/null'
 -- Doesn't work correctly:
 -- commands.paste = 'xdotool getwindowfocus key --window %1 shift click 2'
@@ -30,18 +30,18 @@ commands.pomodoro_notify = "notify-send -t 2000 'started pomodoro'; "
 commands.lockscreen = "xlock -mode hyper -erasedelay 0 -usefirst && " .. commands.pomodoro_prompt
 commands.translate_to_english  = globals.float_terminal_cmd .. " -c 'echo To English...;  echo; read -e | trans -b -t en-US | tee >(xsel); read'"
 commands.translate_to_mandarin = globals.float_terminal_cmd .. " -c 'echo To Mandarin...; echo; read -e | trans -b -t zh-TW | tee >(xsel); read'"
-commands.pomodoro = 
-  commands.pomodoro_kill .. 
-  commands.pomodoro_notify .. 
-  " sleep 1400; " .. 
-  commands.pomodoro_warning .. 
-  "xlock -mode flag -erasedelay 0 -usefirst -message 'break' && " .. 
+commands.pomodoro =
+  commands.pomodoro_kill ..
+  commands.pomodoro_notify ..
+  " sleep 1400; " ..
+  commands.pomodoro_warning ..
+  "xlock -mode flag -erasedelay 0 -usefirst -message 'break' && " ..
   commands.pomodoro_prompt
-commands.pingoog = 
+commands.pingoog =
   "if timeout 1 ping -c 1 8.8.8.8 &> /dev/null; " ..
   "then :; else echo BROKAN; " ..
   "fi"
-commands.pingdev = 
+commands.pingdev =
   "if timeout 1 ping -c 1 10.8.0.1 &> /dev/null; " ..
   "then echo VPN; else :; " ..
   "fi"
@@ -57,7 +57,7 @@ commands.toggle_touchpad_click = "x=$(synclient | grep TapButton1 | awk '{print 
 commands.toggle_touchpad = "x=$(synclient | grep TouchpadOff | awk '{print $3}'); synclient TouchpadOff=$((1-$x))"
 
 -- LXC settings
-commands.lxc_settings = 
+commands.lxc_settings =
   "export ' ' TERM=screen ';' ' ' export ' ' " ..
   "PS1=\\\''[\\u@$(hostname | sed s,.facebook.com,,) \\W]\\$ '\\\' ';' " ..
   "' ' export ' ' ls=\\\'ls ' ' --color=auto\\\' ';' " ..
@@ -66,7 +66,7 @@ commands.awk_print = "\\\'\\{print ' ' \\$1\\}\\\' ' '"
 
 commands.xdotool_echo = "sleep .3; xdotool type "
 commands.echo_lxc_settings = commands.xdotool_echo .. commands.lxc_settings
-commands.respawn_cmd_shell = 
+commands.respawn_cmd_shell =
   "sleep .3; xdotool key --delay 10 ctrl+d Return Up Return"
 commands.echo_awk_print = commands.xdotool_echo .. commands.awk_print
 commands.terminal_white = globals.terminal .. " -bg white -fg black"

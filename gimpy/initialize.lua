@@ -14,7 +14,7 @@ local mouse = require("gimpy/mouse")
 
 local initialize = {}
 
-initialize.initialize = function ()
+initialize.initialize = function()
   theme.setup_theme()
   layouts.set_awesome_layouts()
   menu.setup_menu_terminal()

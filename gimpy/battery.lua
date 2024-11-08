@@ -11,10 +11,10 @@ local print = print
 local pairs = pairs
 
 local limits = {
-  {16, 5},
-  {8, 3},
-  {4, 1},
-  {0, 0}
+  { 16, 5 },
+  { 8,  3 },
+  { 4,  1 },
+  { 0,  0 }
 }
 -- TODO: How can you reset it after charge?
 local nextlim = limits[1][1]
@@ -47,18 +47,20 @@ local function get_bat_state(acpi_line)
     remtime = acpi_line:sub(idx - 9, idx - 5):match("0*(.+)")
   end
 
-  return {percentage = percentage,
-          dir = dir,
-          remtime = remtime}
+  return {
+    percentage = percentage,
+    dir = dir,
+    remtime = remtime
+  }
 end
 
-local function getnextlim (num)
+local function getnextlim(num)
   local lim = nil
   local step = nil
   for ind, pair in pairs(limits) do
     lim = pair[1]
     step = pair[2]
-    nextlim = limits[ind+1][1] or 0
+    nextlim = limits[ind + 1][1] or 0
     if num > nextlim then
       repeat
         lim = lim - step
@@ -72,13 +74,14 @@ local function getnextlim (num)
 end
 
 local function notify_on_low(percentage)
-  naughty.notify({title = "   ҉ Beware!    ҉ ",
-    text = "Battery charge is low ("..percentage.."%)!",
+  naughty.notify({
+    title = "   ҉ Beware!    ҉ ",
+    text = "Battery charge is low (" .. percentage .. "%)!",
     timeout = 7,
     position = "bottom_right",
     fg = beautiful.fg_focus,
     bg = beautiful.bg_focus
-    })
+  })
 end
 
 local function get_battery_status_text(acpi_output)
@@ -99,7 +102,7 @@ local function get_battery_status_text(acpi_output)
       return nil
     end
 
-    local percentage_string = percentage.."%"
+    local percentage_string = percentage .. "%"
     if dir == -1 then
       prefix = "-"
     elseif dir == 1 then
@@ -113,38 +116,38 @@ local function get_battery_status_text(acpi_output)
       if remtime == nil then
         print("remtime is nil")
       else
-        print("remtime: "..remtime)
+        print("remtime: " .. remtime)
       end
       if dir == nil then
         print("dir is nil")
       else
-        print("dir: "..dir)
+        print("dir: " .. dir)
       end
-      print("acpi_line: "..acpi_line)
-      print("percentage: "..percentage)
+      print("acpi_line: " .. acpi_line)
+      print("percentage: " .. percentage)
     end
 
-    remaining = dir == 0 and "" or " ("..prefix..""..remtime..")"
+    remaining = dir == 0 and "" or " (" .. prefix .. "" .. remtime .. ")"
 
     if percentage <= limits[1][1] then
       percentage_string = string.format(
         "<span color='%s'> %s </span>",
         color_low,
-        percentage.."%"
+        percentage .. "%"
       )
     end
 
-    output_string = output_string..percentage_string..remaining.." // "
+    output_string = output_string .. percentage_string .. remaining .. " // "
     ::continue::
   end
-  return output_string:sub(1,-5)
+  return output_string:sub(1, -5)
 end
 
 local battery = {}
 
-battery.update_battery_widget_text = function (widget)
+battery.update_battery_widget_text = function(widget)
   awful.spawn.easy_async('acpi -b',
-    function (stdout, stderr, reason, exit_code)
+    function(stdout, stderr, reason, exit_code)
       -- TODO: use a normal chomp function here
       local chomped = stdout:gsub('(.*)\n$', '%1')
       widget.markup = get_battery_status_text(chomped)

@@ -4,17 +4,19 @@ local globals = require("gimpy/globals")
 
 local mouse = {}
 
-mouse.setup_root_mouse_actions = function ()
+mouse.setup_root_mouse_actions = function()
   root.buttons(awful.util.table.join(
-    awful.button({ }, 3, function () menu.mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
+    awful.button({}, 3, function() menu.mymainmenu:toggle() end),
+    awful.button({}, 4, awful.tag.viewnext),
+    awful.button({}, 5, awful.tag.viewprev)
   ))
 end
 
-mouse.get_client_buttons = function ()
+mouse.get_client_buttons = function()
   return awful.util.table.join(
-    awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
+    awful.button({}, 1, function(c)
+      client.focus = c; c:raise()
+    end),
     awful.button({ globals.modkey }, 1, awful.mouse.client.move),
     awful.button({ globals.modkey }, 3, awful.mouse.client.resize)
   )

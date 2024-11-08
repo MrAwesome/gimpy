@@ -8,15 +8,15 @@ local globals = require("gimpy/globals")
 local floating_client_rules = {
   rule_any = {
     instance = {
-      "DTA",  -- Firefox addon DownThemAll.
-      "copyq",  -- Includes session name in class.
+      "DTA",   -- Firefox addon DownThemAll.
+      "copyq", -- Includes session name in class.
     },
     class = {
       globals.float_terminal_name,
       "Arandr",
       "Gpick",
       "Kruler",
-      "MessageWin",  -- kalarm.
+      "MessageWin", -- kalarm.
       "Sxiv",
       "Dolphin",
       "Wpa_gui",
@@ -30,11 +30,11 @@ local floating_client_rules = {
 
     name = {
       globals.float_terminal_name,
-      "Event Tester",  -- xev.
+      "Event Tester", -- xev.
     },
     role = {
-      "AlarmWindow",  -- Thunderbird's calendar.
-      "pop-up",     -- e.g. Google Chrome's (detached) Developer Tools.
+      "AlarmWindow", -- Thunderbird's calendar.
+      "pop-up",      -- e.g. Google Chrome's (detached) Developer Tools.
     }
   },
   properties = { floating = true }
@@ -72,11 +72,11 @@ end
 local ss = second_screen_progs_go_here
 
 -- Rules to apply to new clients (through the "manage" signal).
-rules.set_all_client_rules = function (clientkeys, clientbuttons)
+rules.set_all_client_rules = function(clientkeys, clientbuttons)
   awful.rules.rules = {
     -- All clients will match this rule.
     {
-      rule = { },
+      rule = {},
       properties = {
         border_width = 1,
         border_color = beautiful.border_normal,
@@ -85,7 +85,7 @@ rules.set_all_client_rules = function (clientkeys, clientbuttons)
         keys = clientkeys,
         buttons = clientbuttons,
         screen = awful.screen.preferred,
-        placement = awful.placement.no_overlap+awful.placement.no_offscreen
+        placement = awful.placement.no_overlap + awful.placement.no_offscreen
       }
     },
 
@@ -99,41 +99,41 @@ rules.set_all_client_rules = function (clientkeys, clientbuttons)
       properties = { titlebars_enabled = false }
     },
 
-    { rule = { name = "Firefox" }, properties = { tag = "1" } },
-    { rule = { class = "Firefox" }, properties = { tag = "1" } },
-    { rule = { class = "Chromium" }, properties = { tag = "1" } },
-    { rule = { class = "Google Chrome" }, properties = { tag = "1" } },
-    { rule = { name = globals.screen_one_terminal_name }, properties = { tag = "1" } },
-    { rule = { name = globals.work_terminal_name }, properties = { tag = "2" } },
-    { rule = { name = ".*Godot.*" }, properties = { tag = "2" } },
+    { rule = { name = "Firefox" },                         properties = { tag = "1" } },
+    { rule = { class = "Firefox" },                        properties = { tag = "1" } },
+    { rule = { class = "Chromium" },                       properties = { tag = "1" } },
+    { rule = { class = "Google Chrome" },                  properties = { tag = "1" } },
+    { rule = { name = globals.screen_one_terminal_name },  properties = { tag = "1" } },
+    { rule = { name = globals.work_terminal_name },        properties = { tag = "2" } },
+    { rule = { name = ".*Godot.*" },                       properties = { tag = "2" } },
     { rule = { name = globals.screen_four_terminal_name }, properties = { tag = "4", screen = ss } },
-    { rule = { name = "Signal" }, properties = { tag = "3", screen = ss } },
-    { rule = { name = ".*Connect a Signal.*" }, properties = { tag = "2", screen = ss } },
-    { rule = { class = ".*inecraft.*" }, properties = { tag = "4" } },
-    { rule = { name = "Team Fortress 2.*" }, properties = { tag = "4" } },
-    { rule = { name = ".*Red Dead Redemption.*" }, properties = { tag = "4" } },
-    { rule = { name = ".*Rockstar Games.*" }, properties = { tag = "4" } },
-    { rule = { class = ".*Rockstar Games.*" }, properties = { tag = "4" } },
-    { rule = { class = ".*hl_linux.*" }, properties = { tag = "4" } },
-    { rule = { class = ".*[Ll]utris.*" }, properties = { tag = "5", screen = ss } },
-    { rule = { name = "^Steam$" }, properties = { tag = "5", screen = ss } },
-    { rule = { class = "^Steam$" }, properties = { tag = "5", screen = ss } },
-    { rule = { name = "Spotify.*" }, properties = { tag = "8", screen = ss } },
-    { rule = { class = "Spotify.*" }, properties = { tag = "8", screen = ss } },
-    { rule = { class = "Discord" }, properties = { tag = "7", screen = ss } },
-    { rule = { class = "vesktop" }, properties = { tag = "7", screen = ss } },
-    { rule = { name = "vesktop" }, properties = { tag = "7", screen = ss } },
-    { rule = { name = "Discord" }, properties = { tag = "7", screen = ss } },
-    { rule = { name = "WebCord" }, properties = { tag = "7", screen = ss } },
+    { rule = { name = "Signal" },                          properties = { tag = "3", screen = ss } },
+    { rule = { name = ".*Connect a Signal.*" },            properties = { tag = "2", screen = ss } },
+    { rule = { class = ".*inecraft.*" },                   properties = { tag = "4" } },
+    { rule = { name = "Team Fortress 2.*" },               properties = { tag = "4" } },
+    { rule = { name = ".*Red Dead Redemption.*" },         properties = { tag = "4" } },
+    { rule = { name = ".*Rockstar Games.*" },              properties = { tag = "4" } },
+    { rule = { class = ".*Rockstar Games.*" },             properties = { tag = "4" } },
+    { rule = { class = ".*hl_linux.*" },                   properties = { tag = "4" } },
+    { rule = { class = ".*[Ll]utris.*" },                  properties = { tag = "5", screen = ss } },
+    { rule = { name = "^Steam$" },                         properties = { tag = "5", screen = ss } },
+    { rule = { class = "^Steam$" },                        properties = { tag = "5", screen = ss } },
+    { rule = { name = "Spotify.*" },                       properties = { tag = "8", screen = ss } },
+    { rule = { class = "Spotify.*" },                      properties = { tag = "8", screen = ss } },
+    { rule = { class = "Discord" },                        properties = { tag = "7", screen = ss } },
+    { rule = { class = "vesktop" },                        properties = { tag = "7", screen = ss } },
+    { rule = { name = "vesktop" },                         properties = { tag = "7", screen = ss } },
+    { rule = { name = "Discord" },                         properties = { tag = "7", screen = ss } },
+    { rule = { name = "WebCord" },                         properties = { tag = "7", screen = ss } },
 
     -- Reference:
-      -- tag = "5",
-      -- screen = ss,
-      -- titlebars_enabled = false,
-      -- floating = true,
-      -- border_width = 0,
-      -- border_color = 0,
-      -- size_hints_honor = false,
+    -- tag = "5",
+    -- screen = ss,
+    -- titlebars_enabled = false,
+    -- floating = true,
+    -- border_width = 0,
+    -- border_color = 0,
+    -- size_hints_honor = false,
 
     ontop_rules,
   }

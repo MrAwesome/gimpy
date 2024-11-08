@@ -9,21 +9,23 @@ menu.myawesomemenu = {
   -- { "manual", globals.terminal .. " -e man awesome" },
   -- { "edit config", globals.editor_cmd .. " " .. awesome.conffile },
   { "restart", awesome.restart },
-  { "quit", awesome.quit }
+  { "quit",    awesome.quit }
 }
 
-menu.mymainmenu = awful.menu({ items = { 
-  { "awesome", menu.myawesomemenu, beautiful.awesome_icon },
-  { "open terminal", terminal }
-}})
-
-menu.mylauncher = awful.widget.launcher({ 
-  image = beautiful.awesome_icon,
-  menu = menu.mymainmenu 
+menu.mymainmenu = awful.menu({
+  items = {
+    { "awesome",       menu.myawesomemenu, beautiful.awesome_icon },
+    { "open terminal", terminal }
+  }
 })
 
-menu.setup_menu_terminal = function ()
-  menubar.utils.terminal = terminal 
+menu.mylauncher = awful.widget.launcher({
+  image = beautiful.awesome_icon,
+  menu = menu.mymainmenu
+})
+
+menu.setup_menu_terminal = function()
+  menubar.utils.terminal = terminal
 end
 
 
