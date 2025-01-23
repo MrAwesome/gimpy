@@ -87,7 +87,7 @@ end
 local function get_battery_status_text(acpi_output)
   local prefix = "⚝"
   local output_string = ""
-  acpi_lines = gears.string.split(acpi_output, "\n")
+  local acpi_lines = gears.string.split(acpi_output, "\n")
   for ind, acpi_line in pairs(acpi_lines) do
     if string.match(acpi_line, "unavailable") then
       goto continue
@@ -127,7 +127,7 @@ local function get_battery_status_text(acpi_output)
       print("percentage: " .. percentage)
     end
 
-    remaining = dir == 0 and "" or " (" .. prefix .. "" .. remtime .. ")"
+    local remaining = dir == 0 and "" or " (" .. prefix .. "" .. remtime .. ")"
 
     if percentage <= limits[1][1] then
       percentage_string = string.format(
@@ -146,11 +146,19 @@ end
 local battery = {}
 
 battery.update_battery_widget_text = function(widget)
-  awful.spawn.easy_async('acpi -b',
+  awful.spawn.easy_async('timeout 1 acpi -b',
     function(stdout, stderr, reason, exit_code)
-      -- TODO: use a normal chomp function here
-      local chomped = stdout:gsub('(.*)\n$', '%1')
-      widget.markup = get_battery_status_text(chomped)
+      local widgettext
+      if exit_code == 124 then
+          widgettext = "((acpi command timed out!))"
+      elseif exit_code ~= 0 then
+          widgettext = "((acpi command failed!))"
+      else
+          -- TODO: use a normal chomp function here
+          local chomped = stdout:gsub('(.*)\n$', '%1')
+          widgettext = get_battery_status_text(chomped)
+      end
+      widget.markup = widgettext
     end
   )
 end

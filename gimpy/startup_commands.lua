@@ -24,12 +24,12 @@ startup_commands.run_startup_commands = function()
   --    end
   --  end)
 
-  screen.tags[2]:view_only()
-  awful.spawn.easy_async('pgrep -if godot', function(stdout, stderr, exitreason, exitcode)
-    if exitcode > 0 then
-      awful.spawn.easy_async_with_shell("godot", noop)
-    end
-  end)
+  --  screen.tags[2]:view_only()
+  --  awful.spawn.easy_async('pgrep -if godot', function(stdout, stderr, exitreason, exitcode)
+  --    if exitcode > 0 then
+  --      awful.spawn.easy_async_with_shell("cd ~/code/decktricks; godot --editor --language-server", noop)
+  --    end
+  --  end)
 
   screen.tags[3]:view_only()
   awful.spawn.easy_async('pgrep -if signal-desktop', function(stdout, stderr, exitreason, exitcode)

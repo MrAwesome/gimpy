@@ -10,7 +10,7 @@ commands.signal_desktop = "signal-desktop &> /dev/null "
 -- commands.paste = 'xdotool getwindowfocus key --window %1 shift click 2'
 --
 
-commands.paste = "~/bin/get_window_paste_xdotool_command.sh"
+commands.paste = "/home/glenn/bin/get_window_paste_xdotool_command.sh"
 
 commands.notes = globals.terminal .. " -title hnb -e bash -c hnb"
 commands.filebrowser = "dbus-launch nautilus --no-desktop --browser"
@@ -66,8 +66,6 @@ commands.awk_print = "\\\'\\{print ' ' \\$1\\}\\\' ' '"
 
 commands.xdotool_echo = "sleep .3; xdotool type "
 commands.echo_lxc_settings = commands.xdotool_echo .. commands.lxc_settings
-commands.respawn_cmd_shell =
-  "sleep .3; xdotool key --delay 10 ctrl+d Return Up Return"
 commands.echo_awk_print = commands.xdotool_echo .. commands.awk_print
 commands.terminal_white = globals.terminal .. " -bg white -fg black"
 commands.minecraft = "prime-run minecraft-launcher"

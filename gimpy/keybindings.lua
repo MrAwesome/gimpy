@@ -51,6 +51,10 @@ keybindings.get_default_client_keybindings = function()
       function(c) c:kill() end,
       { description = "close", group = "client" }
     ),
+    key({ "Mod1" }, "F8",
+      function(c) c:kill() end,
+      { description = "close", group = "client" }
+    ),
     key({ mc, "Control" }, "space",
       awful.client.floating.toggle,
       { description = "toggle floating", group = "client" }
@@ -91,6 +95,7 @@ keybindings.get_default_global_keybindings = function()
     key({ mc, "Shift" }, "q", awesome.quit),
     key({ mc }, "Left", awful.tag.viewprev),
     key({ mc }, "Right", awful.tag.viewnext),
+    key({ "Mod1" }, "F7", awful.tag.viewnext),
     key({ mc }, "`", awful.tag.viewprev),
     key({ mc }, "0", awful.tag.viewnext),
     key({ mc }, "Escape", awful.tag.history.restore),
@@ -245,9 +250,9 @@ keybindings.get_global_user_command_keybindings = function()
     key({ mc, "Mod1" }, "g", shell(commands.emailaddr)),
 
     -- Paste
-    key({ "Shift" }, "XF86Eject", shell(commands.paste)),
-    key({ "Shift" }, "F8", shell(commands.paste)),
-    key({ "Shift" }, "F9", shell(commands.paste)),
+    key({ }, "XF86Eject", spawn(commands.paste)),
+    key({ "Mod4" }, "F8", spawn(commands.paste)),
+    key({ "Mod4" }, "F9", spawn(commands.paste)),
 
     -- Music bindings
     key({ mc }, "q", shell(commands.musicplayer.toggle)),
