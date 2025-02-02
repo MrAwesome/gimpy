@@ -46,6 +46,11 @@ commands.pingdev =
   "then echo VPN; else :; " ..
   "fi"
 
+commands.pingeu =
+  "if timeout 1 ping -c 1 10.9.0.1 &> /dev/null; " ..
+  "then echo EU; else :; " ..
+  "fi"
+
 commands.checkgpu = '/home/glenn/bin/getgpumode.sh'
 
 commands.one_screen = "/home/glenn/bin/screens/onescreen.sh"
