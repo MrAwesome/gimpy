@@ -8,8 +8,8 @@ local function noop() end
 
 startup_commands.run_startup_commands = function()
   local screen = mouse.screen
-  awful.spawn.easy_async("xmodmap .xmodmaprc", noop)
-  awful.spawn.easy_async("setxkbmap -option caps:escape", noop)
+  --awful.spawn.easy_async("xmodmap .xmodmaprc", noop)
+  --awful.spawn.easy_async("setxkbmap -option caps:escape", noop)
 
   screen.tags[1]:view_only()
   awful.spawn.easy_async('pgrep -if firefox', function(stdout, stderr, exitreason, exitcode)
