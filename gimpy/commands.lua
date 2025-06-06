@@ -38,17 +38,17 @@ commands.pomodoro =
   "xlock -mode flag -erasedelay 0 -usefirst -message 'break' && " ..
   commands.pomodoro_prompt
 commands.pingoog =
-  "if timeout 1 ping -c 1 8.8.8.8 &> /dev/null; " ..
+  "if ping -W 1 -c 1 8.8.8.8 &> /dev/null; " ..
   "then :; else echo BROKAN; " ..
   "fi"
 commands.pingdev =
-  "if timeout 1 ping -c 1 10.8.0.1 &> /dev/null; " ..
+  "if ping -W 1 -c 1 10.8.0.1 &> /dev/null; " ..
   "then echo VPN; else :; " ..
   "fi"
 
-commands.pingeu =
-  "if timeout 1 ping -c 1 10.9.0.1 &> /dev/null; " ..
-  "then echo EU; else :; " ..
+commands.pingza =
+  "if ping -W 1 -c 1 10.9.0.1 &> /dev/null; " ..
+  "then echo ZA; else :; " ..
   "fi"
 
 commands.checkgpu = '/home/glenn/bin/getgpumode.sh'

@@ -7,7 +7,7 @@ customize_layout.initialize_custom_layout = function()
   --screen.tags[2].master_width_factor = 0.20
   --screen.tags[1]:view_only()
   screen.tags[1].layout = awful.layout.suit.max
-  screen.tags[3].layout = awful.layout.suit.max
+  --screen.tags[3].layout = awful.layout.suit.max
   screen.tags[5].layout = awful.layout.suit.max
 
   -- To set a layout per tag:

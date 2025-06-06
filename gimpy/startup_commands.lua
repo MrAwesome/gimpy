@@ -46,7 +46,7 @@ startup_commands.run_startup_commands = function()
   end)
 
   screen.tags[4]:view_only()
-  awful.spawn.easy_async('pgrep -if steam', function(stdout, stderr, exitreason, exitcode)
+  awful.spawn.easy_async('pgrep -x steam', function(stdout, stderr, exitreason, exitcode)
     if exitcode > 0 then
       awful.spawn.easy_async_with_shell("steam", noop)
     end

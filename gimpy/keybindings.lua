@@ -51,7 +51,7 @@ keybindings.get_default_client_keybindings = function()
       function(c) c:kill() end,
       { description = "close", group = "client" }
     ),
-    key({ "Mod1" }, "F8",
+    key({ "Mod1" }, "F10",
       function(c) c:kill() end,
       { description = "close", group = "client" }
     ),

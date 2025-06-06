@@ -56,9 +56,9 @@ local function set_pingdev_text(widget)
   end
 end
 
-local function set_pingeu_text(widget)
+local function set_pingza_text(widget)
   return function()
-    run_cmd_and_set_widget_text(commands.pingeu, widget, '#9F55FF')
+    run_cmd_and_set_widget_text(commands.pingza, widget, '#9F55FF')
   end
 end
 
@@ -90,7 +90,7 @@ widget_timers.start_widget_timers = function(widgets)
   initiate_and_start_timer_for_function(set_music_text(widgets.musicwidget), 5)
   initiate_and_start_timer_for_function(set_pingoog_text(widgets.pingoogwidget), 5)
   initiate_and_start_timer_for_function(set_pingdev_text(widgets.pingdevwidget), 5)
-  initiate_and_start_timer_for_function(set_pingeu_text(widgets.pingeuwidget), 5)
+  initiate_and_start_timer_for_function(set_pingza_text(widgets.pingzawidget), 5)
   initiate_and_start_timer_for_function(set_gpu_text(widgets.gpu), 5)
   initiate_and_start_timer_for_function(set_battery_text(widgets.batterywidget), 5)
 end
