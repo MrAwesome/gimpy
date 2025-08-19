@@ -52,12 +52,12 @@ startup_commands.run_startup_commands = function()
     end
   end)
 
-  screen.tags[4]:view_only()
-  awful.spawn.easy_async('pgrep -if lutris', function(stdout, stderr, exitreason, exitcode)
-    if exitcode > 0 then
-      awful.spawn.easy_async_with_shell("lutris", noop)
-    end
-  end)
+  --  screen.tags[4]:view_only()
+  --  awful.spawn.easy_async('pgrep -if lutris', function(stdout, stderr, exitreason, exitcode)
+  --    if exitcode > 0 then
+  --      awful.spawn.easy_async_with_shell("lutris", noop)
+  --    end
+  --  end)
 
   screen.tags[7]:view_only()
   awful.spawn.easy_async('pgrep -if vesktop', function(stdout, stderr, exitreason, exitcode)
