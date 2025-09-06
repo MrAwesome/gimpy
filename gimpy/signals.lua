@@ -21,7 +21,7 @@ signals.connect_all_signals = function()
   -- Enable sloppy focus, so that focus follows mouse.
   client.connect_signal("mouse::enter", function(c)
     if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
-        and awful.client.focus ~= nil
+        and awful.client.focus.filter ~= nil
         and awful.client.focus.filter(c) then
       client.focus = c
     end

@@ -19,18 +19,18 @@ local floating_client_rules = {
       "MessageWin", -- kalarm.
       "Sxiv",
       "Dolphin",
+      "Decktricks.*",
       "Wpa_gui",
       "pinentry",
       "veromix",
       ".*inecraft.*",
-      "Decktricks.*",
-      "GUI Test.*",
       "xtightvncviewer"
     },
 
     name = {
       globals.float_terminal_name,
       "Event Tester", -- xev.
+      "Decktricks.*",
     },
     role = {
       "AlarmWindow", -- Thunderbird's calendar.
@@ -69,7 +69,8 @@ else
   second_screen_progs_go_here = 1
 end
 
-local ss = second_screen_progs_go_here
+-- TODO: this is disabled for use with XR glasses, which should be secondary. Need a better system.
+local ss = 1
 
 -- Rules to apply to new clients (through the "manage" signal).
 rules.set_all_client_rules = function(clientkeys, clientbuttons)
