@@ -3,21 +3,37 @@ local awful = require("awful")
 local battery = require("gimpy/battery")
 local commands = require("gimpy/commands")
 
+local last_widget_text = setmetatable({}, { __mode = "k" })
+
+local function trim_string(s)
+  if s == nil then return s end
+  s = s:gsub("\r", "")
+  s = s:gsub("\n+$", "")
+  s = s:gsub("^%s+", "")
+  s = s:gsub("%s+$", "")
+  return s
+end
+
 local function update_widget_text(widget, txt, color)
+  txt = trim_string(txt)
   if txt == "" or txt == nil then
+    if last_widget_text[widget] == "" then return end
     widget.text = ""
+    last_widget_text[widget] = ""
   elseif color == "" or color == nil then
+    if last_widget_text[widget] == txt then return end
     widget.text = txt
+    last_widget_text[widget] = txt
   else
-    txt = awful.util.escape(txt)
-    formatted = " <span color='" .. color .. "'> " ..
-        txt ..
-        " </span> "
+    local escaped = awful.util.escape(txt)
+    local formatted = " <span color='" .. color .. "'> " .. escaped .. " </span> "
+    if last_widget_text[widget] == formatted then return end
     widget.markup = formatted
+    last_widget_text[widget] = formatted
   end
 end
 
-local function run_cmd_and_set_widget_text(command, widget, color, colorcheck)
+local function run_cmd_and_set_widget_text(command, widget, color, colorcheck, on_complete)
   awful.spawn.easy_async_with_shell(command,
     function(stdout, stderr, reason, exit_code)
       if color == nil then
@@ -28,6 +44,7 @@ local function run_cmd_and_set_widget_text(command, widget, color, colorcheck)
         end
       end
       update_widget_text(widget, stdout, color)
+      if on_complete then on_complete() end
     end)
 end
 
@@ -39,26 +56,38 @@ local function initiate_and_start_timer_for_function(func, interval)
 end
 
 local function set_music_text(widget)
+  local running = false
   return function()
-    run_cmd_and_set_widget_text(commands.spotify.currsong, widget, '#008AFF')
+    if running then return end
+    running = true
+    run_cmd_and_set_widget_text(commands.spotify.currsong, widget, '#008AFF', nil, function() running = false end)
   end
 end
 
 local function set_pingoog_text(widget)
+  local running = false
   return function()
-    run_cmd_and_set_widget_text(commands.pingoog, widget, '#FF8AFF')
+    if running then return end
+    running = true
+    run_cmd_and_set_widget_text(commands.pingoog, widget, '#FF8AFF', nil, function() running = false end)
   end
 end
 
 local function set_pingdev_text(widget)
+  local running = false
   return function()
-    run_cmd_and_set_widget_text(commands.pingdev, widget, '#00FF00')
+    if running then return end
+    running = true
+    run_cmd_and_set_widget_text(commands.pingdev, widget, '#00FF00', nil, function() running = false end)
   end
 end
 
 local function set_pingza_text(widget)
+  local running = false
   return function()
-    run_cmd_and_set_widget_text(commands.pingza, widget, '#9F55FF')
+    if running then return end
+    running = true
+    run_cmd_and_set_widget_text(commands.pingza, widget, '#9F55FF', nil, function() running = false end)
   end
 end
 
@@ -73,14 +102,20 @@ local function gpu_colorchecker(stdout)
 end
 
 local function set_gpu_text(widget)
+  local running = false
   return function()
-    run_cmd_and_set_widget_text(commands.checkgpu, widget, nil, gpu_colorchecker)
+    if running then return end
+    running = true
+    run_cmd_and_set_widget_text(commands.checkgpu, widget, nil, gpu_colorchecker, function() running = false end)
   end
 end
 
 local function set_battery_text(widget)
+  local running = false
   return function()
-    battery.update_battery_widget_text(widget)
+    if running then return end
+    running = true
+    battery.update_battery_widget_text(widget, function() running = false end)
   end
 end
 

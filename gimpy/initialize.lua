@@ -11,6 +11,7 @@ local customize_layout = require("gimpy/customize_layout")
 local startup_commands = require("gimpy/startup_commands")
 local screen_setup = require("gimpy/screen_setup")
 local mouse = require("gimpy/mouse")
+local gears = require("gears")
 
 local initialize = {}
 
@@ -34,6 +35,11 @@ initialize.initialize = function()
     startup_commands.run_startup_commands()
   end
   customize_layout.initialize_custom_layout()
+
+  -- Periodic GC to keep Lua heap in check during idle long-running sessions
+  local gc_timer = gears.timer({ timeout = 600 })
+  gc_timer:connect_signal("timeout", function() collectgarbage("collect") end)
+  gc_timer:start()
 end
 
 return initialize

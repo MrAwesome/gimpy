@@ -144,8 +144,9 @@ local function get_battery_status_text(acpi_output)
 end
 
 local battery = {}
+local last_battery_text = setmetatable({}, { __mode = "k" })
 
-battery.update_battery_widget_text = function(widget)
+battery.update_battery_widget_text = function(widget, on_complete)
   awful.spawn.easy_async('timeout 1 acpi -b',
     function(stdout, stderr, reason, exit_code)
       local widgettext
@@ -158,7 +159,11 @@ battery.update_battery_widget_text = function(widget)
           local chomped = stdout:gsub('(.*)\n$', '%1')
           widgettext = get_battery_status_text(chomped)
       end
-      widget.markup = widgettext
+      if last_battery_text[widget] ~= widgettext then
+        widget.markup = widgettext
+        last_battery_text[widget] = widgettext
+      end
+      if on_complete then on_complete() end
     end
   )
 end
