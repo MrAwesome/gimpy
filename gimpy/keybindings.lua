@@ -154,9 +154,14 @@ keybindings.get_default_global_keybindings = function()
       function()
         local c = awful.client.restore()
         -- Focus restored client
+        -- if c then
+        --   awful.client.focus = c
+        --   c:raise()
+        -- end
         if c then
-          awful.client.focus = c
-          c:raise()
+          c:emit_signal(
+            "request::activate", "key.unminimize", {raise = true}
+          )
         end
       end,
       { description = "restore minimized", group = "client" }
