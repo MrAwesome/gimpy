@@ -3,7 +3,8 @@ local globals = {}
 globals.modkey = "Mod4"
 
 globals.cmd_shell = "zsh"
-globals.base_terminal = "prime-run wezterm "
+globals.core_terminal_cmd = "wezterm"
+globals.base_terminal = "prime-run " .. globals.core_terminal_cmd .. " "
 globals.terminal_winclass_option = " --class "
 globals.terminal_startcmd = " start "
 

@@ -15,7 +15,7 @@ menu.myawesomemenu = {
 menu.mymainmenu = awful.menu({
   items = {
     { "awesome",       menu.myawesomemenu, beautiful.awesome_icon },
-    { "open terminal", "wezterm" }
+    { "open terminal", globals.terminal }
   }
 })
 
@@ -25,7 +25,7 @@ menu.mylauncher = awful.widget.launcher({
 })
 
 menu.setup_menu_terminal = function()
-  menubar.utils.terminal = terminal
+  menubar.utils.terminal = globals.terminal
 end
 
 
