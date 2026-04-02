@@ -85,10 +85,10 @@ commands.qwerty  = "setxkbmap us"
 commands.colemak = "setxkbmap us -variant colemak"
 
 -- Screen manipulation (brightness, color, whatever)
-commands.brightness_up   = "brightnessctl s +5%"
-commands.brightness_down = "brightnessctl s 5%-"
-commands.brightness_max  = "brightnessctl s 100%"
-commands.brightness_min  = "brightnessctl s 5%"
+commands.brightness_up   = "brightnessctl s +5% &> /dev/null"
+commands.brightness_down = "brightnessctl s 5%- &> /dev/null"
+commands.brightness_max  = "brightnessctl s 100% &> /dev/null"
+commands.brightness_min  = "brightnessctl s 5% &> /dev/null"
 
 -- Music Player Commands
 commands.spotify = {}
