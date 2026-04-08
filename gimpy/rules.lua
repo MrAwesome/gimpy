@@ -14,23 +14,29 @@ local floating_client_rules = {
     class = {
       globals.float_terminal_name,
       "Arandr",
+      "Decktricks.*",
+      "Dolphin",
       "Gpick",
       "Kruler",
       "MessageWin", -- kalarm.
+      "[Mm]inecraft.*",
       "Sxiv",
-      "Dolphin",
-      "Decktricks.*",
+      "T-Engine4",
+      "Tales of Maj.*Main Menu",
       "Wpa_gui",
       "pinentry",
+      "t-engine",
       "veromix",
-      ".*inecraft.*",
-      "xtightvncviewer"
+      "xtightvncviewer",
     },
 
     name = {
       globals.float_terminal_name,
       "Event Tester", -- xev.
       "Decktricks.*",
+      "T-Engine4",
+      "t-engine",
+      "Tales of Maj.*Main Menu",
     },
     role = {
       "AlarmWindow", -- Thunderbird's calendar.
