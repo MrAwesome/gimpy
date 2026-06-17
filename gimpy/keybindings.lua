@@ -248,6 +248,10 @@ keybindings.get_global_user_command_keybindings = function()
     key({ mc, "Shift" }, "t",
       shell(commands.browser .. " 'https://www.youtube.com/playlist?list=PLWtS9zTL-EGOzcWAxG1oxlZZ_EJxLc9gK'")),
     key({ mc, "Control" }, "t", shell(commands.browser .. " 'https://www.youtube.com/@user-rv4ei9md3c'")),
+    key({ mc, "Mod1" }, "t", shell("source ~/.glennh_aliases.sh; te")),
+
+
+
     key({ mc, "Shift", "Mod1" }, "k", shell(commands.kill_browser)),
     key({ mc, "Shift" }, "n", shell(commands.networking_wifi)),
 
